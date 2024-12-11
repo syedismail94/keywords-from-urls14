@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keywords From Urls</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .header nav a:hover {
+            background-color: #0056b3;
+        }
+
+        /* Main Content */
+        .main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 20px;
+        }
+
+        .categories button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .categories button:hover {
+            background-color: #0056b3;
+        }
+
+       container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            width: 100%;
+            height: 250px;
+            padding: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+            resize: none;
+            margin-bottom: 10px;
+        }
+
+         button {
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            textarea {
+                height: 150px;
+                font-size: 14px;
+            }
+
+            button {
+                font-size: 12px;
+                padding: 5px 10px;
+            }
+        }
+
+        .keyword-list {
+            text-align: center;
+            margin-top: 20px;
+            padding: 13px;
+            border: 2px solid #ddd;
+            background-color: #f9f9f9;
+            position: relative;
+        }
+
+        .copy-keywords-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            font-size: 12px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .copy-keywords-button:hover {
+            background-color: #0056b3;
+        }
+        /* Footer */
+        .footer {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer .left {
+            font-size: 14px;
+        }
+
+        .footer .right {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer .right a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer .right a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header nav {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .categories {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .tool-container textarea {
+                height: 150px;
+            }
+
+            .footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer .right {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">Keywords From Urls</div>
+        <nav>
+            <a href="#">Home</a>
+            
+            </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="categories">
+            <button>Keyword Grouping</button>
+            <button>Slug Generator</button>
+            <button>Keyword Density</button>
+        </div>
+
+        <div class="container">
+        <textarea id="urlInput" placeholder="Paste up to 500 URLs here"></textarea>
+        <div class="button-container">
+            <button id="copyButton">Copy URLs</button>
+            <button id="getKeywordsButton">Get Keywords</button>
+        </div>
+        <div class="keyword-list" id="keywordList"></div>
+    </div>
+
+    <script>
+        document.getElementById('urlInput').addEventListener('paste', function (event) {
+            event.preventDefault();
+            const clipboardData = event.clipboardData || window.clipboardData;
+            const pastedData = clipboardData.getData('Text');
+
+            const urlPattern = /(https?:\/\/[^\s]+)/gi;
+            const urls = pastedData.match(urlPattern);
+
+            if (urls) {
+                const currentUrls = event.target.value.match(urlPattern) || [];
+                if (currentUrls.length + urls.length > 500) {
+                    alert('Only 500 URLs are allowed.');
+                    return;
+                }
+                event.target.value += urls.join('\n') + '\n';
+            }
+        });
+
+        document.getElementById('copyButton').addEventListener('click', function () {
+            const textarea = document.getElementById('urlInput');
+            const urlPattern = /(https?:\/\/[^\s]+)/gi;
+            const validUrls = textarea.value.match(urlPattern);
+
+            if (validUrls) {
+                const tempTextarea = document.createElement('textarea');
+                tempTextarea.value = validUrls.join('\n');
+                document.body.appendChild(tempTextarea);
+                tempTextarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempTextarea);
+                this.innerHTML = 'Copied';
+                setTimeout(() => {
+                    this.innerHTML = 'Copy Urls';
+                }, 4000);
+            } else {
+                alert('No valid URLs to copy!');
+            }
+        });
+
+        document.getElementById('getKeywordsButton').addEventListener('click', function () {
+            const textarea = document.getElementById('urlInput');
+            const urlPattern = /(https?:\/\/[^\s]+)/gi;
+            const urls = textarea.value.match(urlPattern);
+            const keywordListDiv = document.getElementById('keywordList');
+
+            keywordListDiv.innerHTML = ''; // Clear previous keyword list
+
+            if (urls && urls.length > 0) {
+                const limitedUrls = urls.slice(0, 500);
+                const keywords = limitedUrls.map(url => extractKeywordFromUrl(url));
+
+                this.innerHTML = 'Go Below';
+                setTimeout(() => {
+                    this.innerHTML = 'Copy Keywords';
+                }, 4000);
+
+                keywordListDiv.innerHTML = '<strong>Keywords List</strong><ul>' +
+                    keywords.map(keyword => `<li>${keyword}</li>`).join('') +
+                    '</ul>';
+
+                const copyKeywordsButton = document.createElement('button');
+                copyKeywordsButton.id = 'copyKeywordsButton';
+                copyKeywordsButton.className = 'copy-keywords-button';
+                copyKeywordsButton.textContent = 'Copy Keywords';
+                keywordListDiv.appendChild(copyKeywordsButton);
+
+                copyKeywordsButton.addEventListener('click', function () {
+                    const keywordItems = keywordListDiv.querySelectorAll('li');
+                    const keywords = Array.from(keywordItems).map(item => item.textContent);
+
+                    if (keywords.length > 0) {
+                        const tempTextarea = document.createElement('textarea');
+                        tempTextarea.value = keywords.join('\n');
+                        document.body.appendChild(tempTextarea);
+                        tempTextarea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(tempTextarea);
+                        this.innerHTML = 'Copied';
+                        setTimeout(() => {
+                            this.innerHTML = 'Copy Keywords';
+                        }, 4000);
+                    } else {
+                        alert('No keywords to copy!');
+                    }
+                });
+            } else {
+                alert('No URLs provided or limit exceeded!');
+            }
+        });
+
+        function extractKeywordFromUrl(url) {
+            try {
+                const urlObj = new URL(url);
+                const pathname = urlObj.pathname;
+                const segments = pathname.split('/').filter(part => part && !part.startsWith('.'));
+
+                if (segments.length > 0) {
+                    const lastSegment = segments[segments.length - 1];
+                    return lastSegment.replace(/[-]/g, ' ').replace(/\.[^/.]+$/, '');
+                } else {
+                    return urlObj.hostname;
+                }
+            } catch (error) {
+                return '(Invalid URL)';
+            }
+        }
+    </script>
+
+    <div style="text-align: center;">
+        <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvj6q0lJAdr2BReKKhoqXpTMX-4jSAq3bqfsU4HvSbi4TIIZpr_3iUdJkagOSjcTpdxtBAXq1WUXEdM22oR_hqtD3RD1e5zG6d1c7T12luHodLKTUN3EErB5MsO7FfNUDtdkCsJPXlOG-AURPtdrUtY8vVa8XgKwFzOQfna-6Wz8Z72Ob0_1TWu9RSEKlI/s1080/Keywords%20From%20Urls.png" style="display: block; padding: 1em 0;">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvj6q0lJAdr2BReKKhoqXpTMX-4jSAq3bqfsU4HvSbi4TIIZpr_3iUdJkagOSjcTpdxtBAXq1WUXEdM22oR_hqtD3RD1e5zG6d1c7T12luHodLKTUN3EErB5MsO7FfNUDtdkCsJPXlOG-AURPtdrUtY8vVa8XgKwFzOQfna-6Wz8Z72Ob0_1TWu9RSEKlI/s320/Keywords%20From%20Urls.png" alt="Keywords Image" width="320">
+        </a>
+        <h3>Extract Keywords from URLs to Organize Your Website Data</h3>
+        <p>When organizing your website data and analyzing the topics covered in your blog, it can be useful to extract keywords from your URLs. Our tool helps you do just that. Here’s how it works:</p>
+        <ul>
+            <li>If you enter a URL like <code>https://www.keywordsfromurls.com/</code>, the tool extracts the keyword <code>www.keywordsfromurls.com</code>.</li>
+            <li>For a URL such as <code>https://keywordsfromurls.com/keywordsfromurls/</code>, the keyword extracted would be <code>keywordsfromurls</code>.</li>
+            <li>If your blog is on Blogger and you provide a URL like <code>https://xyz.blogspot.com/01/01/one-more-second-logic.html</code>, the keyword extracted will be <code>one more second logic</code>.</li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="left">&copy; 2025 Keywords From Urls | DMCA Protected</div>
+        <div class="right">
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Disclaimer</a>
+            <a href="#">Terms&condition</a>
+        </div>
+    </footer>
+</body>
+
+</html>
