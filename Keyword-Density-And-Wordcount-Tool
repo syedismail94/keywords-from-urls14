@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyword Density Tool</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            resize: none;
+        }
+
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .output {
+            margin-top: 20px;
+        }
+
+        .output h2 {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .output p {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 10px;
+            border-collapse: collapse;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f8f8f8;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            button {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            table th, table td {
+                font-size: 0.9rem;
+                padding: 6px;
+            }
+ /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .header nav a:hover {
+            background-color: #0056b3;
+        }
+
+        /* Main Content */
+        .main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 20px;
+        }
+
+        .categories button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .categories button:hover {
+            background-color: #0056b3;
+        }
+         /* Footer */
+        .footer {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer .left {
+            font-size: 14px;
+        }
+
+        .footer .right {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer .right a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer .right a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header nav {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .categories {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .tool-container textarea {
+                height: 150px;
+            }
+
+            .footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer .right {
+                flex-direction: column;
+            }
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+    <header class="header">
+        <div class="logo">Keywords From Urls</div>
+        <nav>
+            <a href="#">Home</a>
+            
+            </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="categories">
+            <a href="keywords-grouping.html">
+                <button>Keyword Grouping</button></a>
+            <button>Slug Generator</button>
+            <button>Keyword Density</button>
+        </div>
+    <div class="container">
+        <h1>Keyword Density Tool</h1>
+        
+        <textarea id="textInput" placeholder="Paste your text here..."></textarea>
+        
+        <button onclick="countWords()">Count Words</button>
+        <button onclick="calculateKeywordDensity()">Keyword Density</button>
+        
+        <div class="output" id="output"></div>
+    </div>
+ <!-- Footer -->
+    <footer class="footer">
+        <div class="left">&copy; 2025 Keywords From Urls | DMCA Protected</div>
+        <div class="right">
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Disclaimer</a>
+            <a href="#">Terms&condition</a>
+        </div>
+    </footer>
+
+    <script>
+        function countWords() {
+            const text = document.getElementById("textInput").value.trim();
+            if (!text) {
+                displayOutput("Word Count", "No text provided.");
+                return;
+            }
+            
+            const words = text.split(/\s+/); // Split text into words by spaces
+            displayOutput("Word Count", `Total Words: ${words.length}`);
+        }
+
+        function calculateKeywordDensity() {
+            const text = document.getElementById("textInput").value.trim();
+            if (!text) {
+                displayOutput("Keyword Density", "No text provided.");
+                return;
+            }
+
+            const words = text.split(/\s+/);
+            const totalWords = words.length;
+
+            const frequency = {};
+            words.forEach(word => {
+                const cleanedWord = word.toLowerCase().replace(/[^a-z0-9]/g, ""); // Remove special chars
+                if (cleanedWord) {
+                    frequency[cleanedWord] = (frequency[cleanedWord] || 0) + 1;
+                }
+            });
+
+            // Generate table for keyword density
+            let densityTable = `<table>
+                                    <tr>
+                                        <th>Word</th>
+                                        <th>Count</th>
+                                        <th>Percentage</th>
+                                    </tr>`;
+            Object.keys(frequency).forEach(word => {
+                const count = frequency[word];
+                const percentage = ((count / totalWords) * 100).toFixed(2);
+                densityTable += `<tr>
+                                    <td>${word}</td>
+                                    <td>${count}</td>
+                                    <td>${percentage}%</td>
+                                 </tr>`;
+            });
+            densityTable += "</table>";
+
+            displayOutput("Keyword Density", densityTable);
+        }
+
+        function displayOutput(title, content) {
+            const outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = `<h2>${title}</h2><div>${content}</div>`;
+        }
+    </script>
+</body>
+</html>
