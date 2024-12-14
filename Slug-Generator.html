@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slug Generator Tool</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input, button, .checkbox-container {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        input[type="text"] {
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        button {
+            font-size: 1rem;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            display: inline-block;
+            width: 48%;
+            text-align: center;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .checkbox-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .output-area {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            word-wrap: break-word;
+        }
+
+        .copy-button {
+            background-color: #28a745;
+        }
+
+        .copy-button.copied {
+            background-color: #218838;
+            color: white;
+        }
+
+        .copy-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            button {
+                width: 100%;
+                margin: 10px 0;
+            }
+          /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .header nav a:hover {
+            background-color: #0056b3;
+        }
+
+        /* Main Content */
+        .main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 20px;
+        }
+
+        .categories button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .categories button:hover {
+            background-color: #0056b3;
+        }
+         /* Footer */
+        .footer {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer .left {
+            font-size: 14px;
+        }
+
+        .footer .right {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer .right a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer .right a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header nav {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .categories {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .tool-container textarea {
+                height: 150px;
+            }
+
+            .footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer .right {
+                flex-direction: column;
+            }
+            }
+
+        }
+    </style>
+</head>
+<body>
+  <!-- Header -->
+    <header class="header">
+        <div class="logo">Keywords From Urls</div>
+        <nav>
+            <a href="#">Home</a>
+            
+            </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="categories">
+            <a href="keywords-grouping.html">
+                <button>Keyword Grouping</button></a>
+            <button>Slug Generator</button>
+            <button>Keyword Density</button>
+        </div>
+  
+    <div class="container">
+        <h1>Slug Generator Tool</h1>
+
+        <label for="inputText">Enter Text:</label>
+        <input type="text" id="inputText" placeholder="Enter your text here">
+
+        <div>
+            <button onclick="setSeparator('-')">Hyphen (-)</button>
+            <button onclick="setSeparator('_')">Underscore (_)</button>
+        </div>
+
+        <div class="checkbox-container">
+            <div>
+                <label for="removeDot">Remove Dot (.):</label>
+                <input type="checkbox" id="removeDot">
+            </div>
+
+            <div>
+                <label for="removeNumbers">Remove Numbers:</label>
+                <input type="checkbox" id="removeNumbers">
+            </div>
+        </div>
+
+        <button onclick="generateSlug()">Generate Slug</button>
+
+        <div class="output-area" id="outputArea"></div>
+
+        <button id="copyButton" class="copy-button" style="display:none;" onclick="copySlug()">Copy</button>
+    </div>
+<!-- Footer -->
+    <footer class="footer">
+        <div class="left">&copy; 2025 Keywords From Urls | DMCA Protected</div>
+        <div class="right">
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Disclaimer</a>
+            <a href="#">Terms&condition</a>
+        </div>
+    </footer>
+    <script>
+        let separator = '';
+
+        function setSeparator(value) {
+            separator = value;
+        }
+
+        function generateSlug() {
+            const inputText = document.getElementById('inputText').value;
+            const removeDot = document.getElementById('removeDot').checked;
+            const removeNumbers = document.getElementById('removeNumbers').checked;
+
+            if (!inputText.trim()) return;
+
+            let slug = inputText.trim().toLowerCase();
+
+            // Remove dots if selected
+            if (removeDot) {
+                slug = slug.replace(/\./g, '');
+            }
+
+            // Remove numbers if selected
+            if (removeNumbers) {
+                slug = slug.replace(/\d+/g, '');
+            }
+
+            // Replace spaces with the selected separator
+            slug = slug.replace(/\s+/g, separator);
+
+            // If the result is just a separator, make it empty
+            if (slug === separator) {
+                slug = '';
+            }
+
+            // Display the generated slug
+            const outputArea = document.getElementById('outputArea');
+            outputArea.textContent = slug;
+
+            // Show the copy button
+            document.getElementById('copyButton').style.display = 'inline-block';
+        }
+
+        function copySlug() {
+            const outputArea = document.getElementById('outputArea');
+            const text = outputArea.textContent;
+
+            if (!text) return;
+
+            // Copy the slug to clipboard
+            navigator.clipboard.writeText(text).then(function() {
+                const copyButton = document.getElementById('copyButton');
+                copyButton.textContent = 'Copied!';
+                copyButton.classList.add('copied');
+
+                // Reset the button text after 4 seconds
+                setTimeout(function() {
+                    copyButton.textContent = 'Copy';
+                    copyButton.classList.remove('copied');
+                }, 4000);
+            }).catch(function(error) {
+                console.error('Error copying text: ', error);
+            });
+        }
+    </script>
+</body>
+</html>
