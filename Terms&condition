@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use - KeywordsFromUrls</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            background: #fff;
+            padding: 20px;
+            margin: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h3, h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        p, ul, li, div {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Terms of Use</h3>
+
+        <h3>Introduction</h3>
+        <p>Welcome to KeywordsFromUrls.com. By accessing and using our website, you agree to comply with and be bound by the following terms and conditions. Please read them carefully, as they govern your use of our services.</p>
+
+        <h3>Use of Our Services</h3>
+        <h4>Keyword Extraction Tool</h4>
+        <p>Our primary service is providing a keyword extraction tool that generates keywords from the URLs you provide. By using our tool, you agree to:</p>
+        <ul>
+            <li><strong>Submit Valid URLs</strong>: The URLs you submit for keyword extraction must be valid and functional.</li>
+            <li><strong>Use Your Own Website URLs</strong>: You are required to submit URLs that belong to websites you own or have explicit permission to analyze. Submitting URLs from websites you do not own or control is strictly prohibited.</li>
+        </ul>
+
+        <h3>Prohibited Conduct</h3>
+        <p>To maintain the integrity and effectiveness of our services, the following actions are prohibited:</p>
+        <ul>
+            <li><strong>Using Third-Party URLs Without Permission</strong>: Submitting URLs from third-party websites without proper authorization is not allowed. This includes, but is not limited to, URLs from websites that you do not own, manage, or have the rights to analyze.</li>
+            <li><strong>Misuse of Services</strong>: Any attempt to misuse or manipulate our keyword extraction tool for unintended purposes may result in restrictions or termination of your access to our website.</li>
+        </ul>
+
+        <h3>Violation of Terms</h3>
+        <p>We reserve the right to monitor usage of our services to ensure compliance with these terms. If you are found to be in violation of these terms, including the use of unauthorized URLs, we may take one or more of the following actions:</p>
+        <ul>
+            <li><strong>Account Suspension</strong>: Temporarily restrict your access to our website and services.</li>
+            <li><strong>Account Termination</strong>: Permanently ban your access to our website and services.</li>
+            <li><strong>Legal Action</strong>: Pursue any legal remedies available to us under applicable law.</li>
+        </ul>
+
+        <h3>Disclaimer of Warranties</h3>
+        <p>KeywordsFromUrls.com provides its services "as is" and "as available" without any warranties, express or implied. We do not guarantee that the keyword extraction tool will meet your specific requirements, be error-free, or operate without interruption.</p>
+
+        <h3>Limitation of Liability</h3>
+        <p>In no event shall KeywordsFromUrls.com be liable for any direct, indirect, incidental, special, or consequential damages resulting from the use or inability to use our services, even if we have been advised of the possibility of such damages.</p>
+
+        <h3>Modification of Terms</h3>
+        <p>KeywordsFromUrls.com reserves the right to update or modify these terms and conditions at any time without prior notice. Your continued use of our website following any changes constitutes your acceptance of the new terms.</p>
+
+        <h3>Governing Law</h3>
+        <p>These terms and conditions are governed by and construed in accordance with the laws of [Your Jurisdiction]. Any disputes arising out of or related to these terms shall be subject to the exclusive jurisdiction of the courts located in KeywordsFromUrls.com.</p>
+
+        <h3>Contact Information</h3>
+        <p>If you have any questions or concerns regarding these terms and conditions, please contact us at <a href="mailto:isyed486@gmail.com">isyed486@gmail.com</a>.</p>
+    </div>
+</body>
+</html>
