@@ -1,392 +1,222 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<html lang="en"> 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+    <meta charset="UTF-8"></meta>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"></meta>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <title>Keywords From Urls</title>
+    <title>Keyword grouping</title>
     <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        /* Header */
-        .header {
+            margin: 20px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            padding: 15px 30px;
-            background-color: #007BFF;
-            color: white;
+            background-color: #f4f4f4;
         }
 
-        .header .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .header nav {
-            display: flex;
-            gap: 15px;
-        }
-
-        .header nav a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .header nav a:hover {
-            background-color: #0056b3;
-        }
-
-        /* Main Content */
-        .main {
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .categories {
-            display: flex;
-            justify-content: space-evenly;
-            margin-bottom: 20px;
-        }
-
-        .categories button {
+        
+        button {
             padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            background-color: #007BFF;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .categories button:hover {
-            background-color: #0056b3;
-        }
-
-       container {
-            position: relative;
-            width: 100%;
-            max-width: 1200px;
-            margin: 20px auto;
-            box-sizing: border-box;
-        }
-
-        textarea {
-            width: 100%;
-            height: 250px;
-            padding: 10px;
-            font-size: 16px;
-            box-sizing: border-box;
-            resize: none;
-            margin-bottom: 10px;
-        }
-
-         button {
-            padding: 8px 12px;
-            font-size: 14px;
-            cursor: pointer;
             background-color: #007BFF;
             color: white;
             border: none;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s ease;
-            margin-right: 10px;
+            cursor: pointer;
+            margin: 10px auto;
         }
 
         button:hover {
             background-color: #0056b3;
         }
 
-        .button-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        @media (max-width: 768px) {
-            textarea {
-                height: 150px;
-                font-size: 14px;
-            }
-
-            button {
-                font-size: 12px;
-                padding: 5px 10px;
-            }
-        }
-
-        .keyword-list {
-            text-align: center;
+        .output {
             margin-top: 20px;
-            padding: 13px;
-            border: 2px solid #ddd;
-            background-color: #f9f9f9;
-            position: relative;
+            font-family: Arial, sans-serif;
+            border: 1px solid #ddd;
+            padding: 15px;
+            width: 100%;
+            text-align:center;
+            max-width: 800px;
+            position: center;
+            background-color: #fff;
+            overflow-y: auto;
+
         }
 
-        .copy-keywords-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            padding: 5px 10px;
-            font-size: 12px;
-            background-color: #007BFF;
+        .highlight {
+            background-color: yellow;
+        }
+
+        .copy-btn {
+            position: center;
+            top: 5px;
+            right: 5px;
+            padding: 8px 15px;
+            font-size: 14px;
+            background-color: #33FFBB;
             color: white;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s ease;
         }
 
-        .copy-keywords-button:hover {
-            background-color: #0056b3;
-        }
-        /* Footer */
-        .footer {
-            background-color: #007BFF;
-            color: white;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
+        .copy-btn:hover {
+            background-color: #33DAFF;
         }
 
-        .footer .left {
-            font-size: 14px;
+        .summary {
+            margin-top: 30px;
+            max-width: 800px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            position: relative;
+          overflow-y: auto;
+
         }
 
-        .footer .right {
-            display: flex;
-            gap: 15px;
+        .summary h3 {
+            margin-bottom: 10px;
         }
 
-        .footer .right a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
+        .summary .line {
+            margin-top: 10px;
         }
 
-        .footer .right a:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header nav {
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-
-            .categories {
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-
-            .tool-container textarea {
-                height: 150px;
-            }
-
-            .footer {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .footer .right {
-                flex-direction: column;
-            }
-        }
+       
     </style>
 </head>
-
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="logo">Keywords From Urls</div>
-        <nav>
-            <a href="#">Home</a>
-            
-            </nav>
-    </header>
+    <div class="container">
+        <h2>Keyword Grouping</h2>
+       <div class="form-floating"> 
+          <textarea class="form-control text-center" id="inputData" maxlength="5000" style="height: 100px;"></textarea>
+         <label for="floatingTextarea2 ">Input keywords here</label>
+        <div class="center"><button class="btn btn-outline-primary " id="processButton" onclick="processData()">Get Start Keywords Grouping</button></div>
 
-    <!-- Main Content -->
-    <main class="main">
-        <div class="categories">
-            <a href="keywords-grouping.html">
-                <button>Keyword Grouping</button></a>
-            <button>Slug Generator</button>
-            <button>Keyword Density</button>
-        </div>
+       <div class="output" id="outputSection" style="display: none;">
+          <button class="copy-btn" id="outputSection" onclick="copySection('outputArea', this)">Copy</button>
+         <div id="outputArea"></div></div>
+       
 
-        <div class="container">
-        <textarea id="urlInput" placeholder="Paste up to 500 URLs here"></textarea>
-        <div class="button-container">
-            <button id="copyButton">Copy URLs</button>
-            <button id="getKeywordsButton">Get Keywords</button>
+        <div class="summary" id="summarySection" style="display: none;">
+            <div>
+                <h3>Common Topics</h3>
+                <button class="copy-btn" id="copyCommon" onclick="copySection('commonTopics', this)">Copy</button>
+                <div id="commonTopics"></div>
+            </div>
+            <div>
+                <h3>Unique Topics</h3>
+                <button class="copy-btn" id="copyUnique" onclick="copySection('uniqueTopics', this)">Copy</button>
+                <div id="uniqueTopics"></div>
+            </div>
         </div>
-        <div class="keyword-list" id="keywordList"></div>
     </div>
+      <div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjjR6b4zCQp08DQnQh3haoXtcWZSRU0LANPMgWNBEbgvC_CzcsNzGhkufqFuzVbjsHgB6ptlkl7pSk08uBEPJc6X4VoybxNTJXRVNVYr9N3M9QDkwaZSBoXIVY3XzRydjgLlz0edt6kaz-ZcFWUGBxXYrk1wBfEZQKRIQK8cVQlcsigvMJGo6YChuv272jo/s1080/KEYWORD%20GROUPING.png" style="display: block; padding: 1em 0; text-align: center;"><img alt="" border="0" data-original-height="1080" data-original-width="1080" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjjR6b4zCQp08DQnQh3haoXtcWZSRU0LANPMgWNBEbgvC_CzcsNzGhkufqFuzVbjsHgB6ptlkl7pSk08uBEPJc6X4VoybxNTJXRVNVYr9N3M9QDkwaZSBoXIVY3XzRydjgLlz0edt6kaz-ZcFWUGBxXYrk1wBfEZQKRIQK8cVQlcsigvMJGo6YChuv272jo/s320/KEYWORD%20GROUPING.png" width="320" /></a></div>
+      <p>"Every blogger uses different methods for keyword grouping. This tool is designed to assist bloggers in grouping keywords but does not provide a complete method for keyword grouping. It serves as a helpful aid for organizing keywords effectively. Feel free to share your suggestions and feedback in the comments. Best of luck with your blogging journey!"<P>
 
     <script>
-        document.getElementById('urlInput').addEventListener('paste', function (event) {
-            event.preventDefault();
-            const clipboardData = event.clipboardData || window.clipboardData;
-            const pastedData = clipboardData.getData('Text');
+        function processData() {
+            const input = document.getElementById("inputData").value.trim();
+            const outputArea = document.getElementById("outputArea");
+            const outputSection = document.getElementById("outputSection");
+            const processButton = document.getElementById("processButton");
+            const summarySection = document.getElementById("summarySection");
+            const commonTopics = document.getElementById("commonTopics");
+            const uniqueTopics = document.getElementById("uniqueTopics");
 
-            const urlPattern = /(https?:\/\/[^\s]+)/gi;
-            const urls = pastedData.match(urlPattern);
+            outputArea.innerHTML = ""; 
+            outputSection.style.display = "none"; 
+            summarySection.style.display = "none"; 
 
-            if (urls) {
-                const currentUrls = event.target.value.match(urlPattern) || [];
-                if (currentUrls.length + urls.length > 500) {
-                    alert('Only 500 URLs are allowed.');
-                    return;
-                }
-                event.target.value += urls.join('\n') + '\n';
+            if (!input) {
+                alert("Please enter some data!");
+                return;
             }
-        });
 
-        document.getElementById('copyButton').addEventListener('click', function () {
-            const textarea = document.getElementById('urlInput');
-            const urlPattern = /(https?:\/\/[^\s]+)/gi;
-            const validUrls = textarea.value.match(urlPattern);
+            const lines = input.split("\n").map(line => line.trim()).slice(0, 500);
+            const wordCount = {}; 
+            const seenCommonWords = new Set();
+            const lineWiseCommonWords = [];
 
-            if (validUrls) {
-                const tempTextarea = document.createElement('textarea');
-                tempTextarea.value = validUrls.join('\n');
-                document.body.appendChild(tempTextarea);
-                tempTextarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(tempTextarea);
-                this.innerHTML = 'Copied';
-                setTimeout(() => {
-                    this.innerHTML = 'Copy Urls';
-                }, 4000);
-            } else {
-                alert('No valid URLs to copy!');
-            }
-        });
-
-        document.getElementById('getKeywordsButton').addEventListener('click', function () {
-            const textarea = document.getElementById('urlInput');
-            const urlPattern = /(https?:\/\/[^\s]+)/gi;
-            const urls = textarea.value.match(urlPattern);
-            const keywordListDiv = document.getElementById('keywordList');
-
-            keywordListDiv.innerHTML = ''; // Clear previous keyword list
-
-            if (urls && urls.length > 0) {
-                const limitedUrls = urls.slice(0, 500);
-                const keywords = limitedUrls.map(url => extractKeywordFromUrl(url));
-
-                this.innerHTML = 'Go Below';
-                setTimeout(() => {
-                    this.innerHTML = 'Copy Keywords';
-                }, 4000);
-
-                keywordListDiv.innerHTML = '<strong>Keywords List</strong><ul>' +
-                    keywords.map(keyword => `<li>${keyword}</li>`).join('') +
-                    '</ul>';
-
-                const copyKeywordsButton = document.createElement('button');
-                copyKeywordsButton.id = 'copyKeywordsButton';
-                copyKeywordsButton.className = 'copy-keywords-button';
-                copyKeywordsButton.textContent = 'Copy Keywords';
-                keywordListDiv.appendChild(copyKeywordsButton);
-
-                copyKeywordsButton.addEventListener('click', function () {
-                    const keywordItems = keywordListDiv.querySelectorAll('li');
-                    const keywords = Array.from(keywordItems).map(item => item.textContent);
-
-                    if (keywords.length > 0) {
-                        const tempTextarea = document.createElement('textarea');
-                        tempTextarea.value = keywords.join('\n');
-                        document.body.appendChild(tempTextarea);
-                        tempTextarea.select();
-                        document.execCommand('copy');
-                        document.body.removeChild(tempTextarea);
-                        this.innerHTML = 'Copied';
-                        setTimeout(() => {
-                            this.innerHTML = 'Copy Keywords';
-                        }, 4000);
-                    } else {
-                        alert('No keywords to copy!');
-                    }
+            lines.forEach(line => {
+                const words = line.split(/\s+/);
+                const lineWords = new Set();
+                words.forEach(word => {
+                    wordCount[word] = (wordCount[word] || 0) + 1;
+                    lineWords.add(word);
                 });
-            } else {
-                alert('No URLs provided or limit exceeded!');
-            }
-        });
 
-        function extractKeywordFromUrl(url) {
-            try {
-                const urlObj = new URL(url);
-                const pathname = urlObj.pathname;
-                const segments = pathname.split('/').filter(part => part && !part.startsWith('.'));
+                const lineCommonWords = Array.from(lineWords).filter(
+                    word => wordCount[word] > 1 && !seenCommonWords.has(word)
+                );
 
-                if (segments.length > 0) {
-                    const lastSegment = segments[segments.length - 1];
-                    return lastSegment.replace(/[-]/g, ' ').replace(/\.[^/.]+$/, '');
-                } else {
-                    return urlObj.hostname;
+                lineCommonWords.forEach(word => seenCommonWords.add(word));
+
+                lineWiseCommonWords.push(lineCommonWords);
+            });
+
+            let outputHTML = "";
+            let commonHTML = "";
+            let uniqueHTML = "";
+
+            lines.forEach((line, index) => {
+                const highlightedWords = [];
+                const uniqueWords = [];
+                const highlightedLine = line
+                    .split(/\s+/)
+                    .map(word => {
+                        if (wordCount[word] > 1) {
+                            highlightedWords.push(word);
+                            return <span class="highlight">${word}</span>;
+                        } else {
+                            uniqueWords.push(word);
+                            return word;
+                        }
+                    })
+                    .join(" ");
+
+                outputHTML += <div>${highlightedLine}</div>;
+
+                if (lineWiseCommonWords[index].length > 0) {
+                    commonHTML += <div class="line">${lineWiseCommonWords[index].join(" ")}</div>;
                 }
-            } catch (error) {
-                return '(Invalid URL)';
-            }
+
+                if (uniqueWords.length > 0) {
+                    uniqueHTML += <div class="line">${uniqueWords.join(" ")}</div>;
+                }
+            });
+
+            outputArea.innerHTML = outputHTML;
+            outputSection.style.display = "block";
+
+            commonTopics.innerHTML = commonHTML;
+            uniqueTopics.innerHTML = uniqueHTML;
+            summarySection.style.display = "block";
+
+            processButton.innerHTML = "Go Below!";
+            setTimeout(() => {
+                processButton.innerHTML = "Get Common Keywords";
+            }, 4000);
         }
-    </script>
 
-    <div class="container">
-        <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvj6q0lJAdr2BReKKhoqXpTMX-4jSAq3bqfsU4HvSbi4TIIZpr_3iUdJkagOSjcTpdxtBAXq1WUXEdM22oR_hqtD3RD1e5zG6d1c7T12luHodLKTUN3EErB5MsO7FfNUDtdkCsJPXlOG-AURPtdrUtY8vVa8XgKwFzOQfna-6Wz8Z72Ob0_1TWu9RSEKlI/s1080/Keywords%20From%20Urls.png" target="_blank">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvj6q0lJAdr2BReKKhoqXpTMX-4jSAq3bqfsU4HvSbi4TIIZpr_3iUdJkagOSjcTpdxtBAXq1WUXEdM22oR_hqtD3RD1e5zG6d1c7T12luHodLKTUN3EErB5MsO7FfNUDtdkCsJPXlOG-AURPtdrUtY8vVa8XgKwFzOQfna-6Wz8Z72Ob0_1TWu9RSEKlI/s320/Keywords%20From%20Urls.png" alt="Keywords from URLs">
-        </a>
-        <h3>Extract Keywords from URLs to Organize Your Website Data</h3>
-        <p>
-            When organizing your website data and analyzing the topics covered in your blog, it can be useful to extract keywords from your URLs. Our tool helps you do just that. Here’s how it works:
-        </p>
-        <ul>
-            <li>
-                If you enter a URL like <code>https://www.keywordsfromurls.com/</code>, the tool extracts the keyword <code>www.keywordsfromurls.com</code>.
-            </li>
-            <li>
-                For a URL such as <code>https://keywordsfromurls.com/keywordsfromurls/</code>, the keyword extracted would be <code>keywordsfromurls</code>.
-            </li>
-            <li>
-                If your blog is on Blogger and you provide a URL like <code>https://xyz.blogspot.com/01/01/one-more-second-logic.html</code>, the keyword extracted will be <code>one more second logic</code>.
-            </li>
-        </ul>
-    </div>
-  <!-- Footer -->
-    <footer class="footer">
-        <div class="left">&copy; 2025 Keywords From Urls | DMCA Protected</div>
-        <div class="right">
-            <a href="#">About Us</a>
-            <a href="#">Contact Us</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Disclaimer</a>
-            <a href="#">Terms&condition</a>
-        </div>
-    </footer>
-</body>
+        function copySection(sectionId, button) {
+            const section = document.getElementById(sectionId);
+            const tempTextArea = document.createElement("textarea");
+            tempTextArea.value = section.innerText;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempTextArea);
 
+            button.innerHTML = "Copied!";
+            setTimeout(() => {
+                button.innerHTML = "Copy";
+            }, 4000);
+        } 
+     
+</script>
+</div></body>
 </html>
