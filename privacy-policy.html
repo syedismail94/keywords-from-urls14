@@ -12,41 +12,155 @@
             background-color: #f9f9f9;
             color: #333;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column;
             min-height: 100vh;
         }
+
         .container {
+            flex-grow: 1; /* Ensures it takes up remaining space */
             max-width: 900px;
             background: #fff;
             padding: 20px;
-            margin: 20px;
+            margin: 20px auto;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
+            box-sizing: border-box;
         }
+
         h2, h3 {
             color: #2c3e50;
             margin-bottom: 10px;
             text-align: center;
         }
+
         p, ul, li {
             line-height: 1.6;
             margin-bottom: 20px;
             text-align: justify;
         }
+
         ul {
             margin-left: 20px;
         }
+
         a {
             color: #3498db;
             text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .header nav a:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 20px; /* Margin to prevent overlapping */
+        }
+
+        .footer .left {
+            font-size: 14px;
+        }
+
+        .footer .right {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer .right a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer .right a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            textarea {
+                height: 150px;
+                font-size: 14px;
+            }
+
+            button {
+                font-size: 12px;
+                padding: 5px 10px;
+            }
+
+            .header nav {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer .right {
+                flex-direction: column;
+            }
+
+            p {
+                text-align: center;
+                font-size: 1rem;
+                margin-top: 20px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">Keywords From Urls</div>
+        <nav>
+            <a href="https://keywordsfromurls.com/">Home</a>
+        </nav>
+    </header>
+
+    <!-- Main Content Container -->
     <div class="container">
         <h2>Privacy Notice</h2>
 
@@ -103,5 +217,20 @@
         <h3>Contact Us</h3>
         <p>If you have any questions or concerns regarding this Privacy Policy or our practices, please contact us at <a href="mailto:isyed486@gmail.com">isyed486@gmail.com</a>.</p>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="left">&copy; 2024-25 Keywords From Urls | <a href="//www.dmca.com/Protection/Status.aspx?ID=6cf02a5f-5f1e-483c-88f4-70ff117b638f" title="DMCA.com Protection Status" class="dmca-badge">
+            <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=6cf02a5f-5f1e-483c-88f4-70ff117b638f"  alt="DMCA.com Protection Status" />
+        </a>
+        <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script></div>
+        <div class="right">
+            <a href="about-us.html">About Us</a>
+            <a href="contact-us.html">Contact Us</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="Disclaimer.html">Disclaimer</a>
+            <a href="Terms&condition.html">Terms&condition</a>
+        </div>
+    </footer>
 </body>
 </html>
