@@ -12,9 +12,8 @@
             background-color: #f4f4f9;
             color: #333;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            min-height: 100vh;
         }
         .container {
             max-width: 800px;
@@ -22,6 +21,7 @@
             padding: 20px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
+            margin: 20px;
             text-align: center;
         }
         h3 {
@@ -44,9 +44,97 @@
         ul li strong {
             color: #2c3e50;
         }
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .header nav a:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer .left {
+            font-size: 14px;
+        }
+
+        .footer .right {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .footer .right a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer .right a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header nav {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer .right {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">Keywords From Urls</div>
+        <nav>
+            <a href="https://keywordsfromurls.com/">Home</a>
+        </nav>
+    </header>
+
     <div class="container">
         <h3>Our Mission</h3>
         <p>Welcome to KeywordsFromUrls.com, your go-to solution for extracting meaningful keywords from your website with specific URLs given. Our mission is to simplify the process of keyword extraction, helping you unlock valuable insights and optimize your content strategy effortlessly.</p>
@@ -72,5 +160,22 @@
 
         <p>Thank you for choosing KeywordsFromUrls.com as your keyword extraction partner. We look forward to supporting your journey towards better content and higher visibility.</p>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="left">
+            &copy; 2024-25 Keywords From Urls |
+            <a href="//www.dmca.com/Protection/Status.aspx?ID=6cf02a5f-5f1e-483c-88f4-70ff117b638f" title="DMCA.com Protection Status">
+                <img src="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=6cf02a5f-5f1e-483c-88f4-70ff117b638f" alt="DMCA.com Protection Status">
+            </a>
+        </div>
+        <div class="right">
+            <a href="about-us.html">About Us</a>
+            <a href="contact-us.html">Contact Us</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="disclaimer.html">Disclaimer</a>
+            <a href="terms-condition.html">Terms & Conditions</a>
+        </div>
+    </footer>
 </body>
 </html>
