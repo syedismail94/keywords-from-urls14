@@ -258,30 +258,63 @@
             margin-top: 20px;
         }
         }
-        share-icons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .share-icons a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            color: white;
-            font-size: 20px;
-            text-decoration: none;
-        }
-        .share-icons a:hover {
-            transform: scale(1.1);
-        }
-        .facebook { background-color: #4267B2; }
-        .twitter { background-color: #1DA1F2; }
-        .linkedin { background-color: #0077B5; }
-        .whatsapp { background-color: #25D366; }
+       /* Container to center the section */
+.share-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+}
+
+/* Flexbox for share icons */
+.share-icons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 20px;
+    flex-wrap: wrap; /* Ensures responsiveness on small screens */
+}
+
+/* Individual share icons */
+.share-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Hover effect */
+.share-icons a:hover {
+    transform: scale(1.1);
+}
+
+/* Specific platform styles */
+.facebook { background-color: #4267B2; }
+.twitter { background-color: #1DA1F2; }
+.linkedin { background-color: #0077B5; }
+.whatsapp { background-color: #25D366; }
+
+/* Responsiveness */
+@media (max-width: 600px) {
+    .share-icons {
+        gap: 15px; /* Reduce gap on smaller screens */
+    }
+    .share-icons a {
+        width: 40px; /* Smaller icons for smaller screens */
+        height: 40px;
+        font-size: 18px;
+    }
+}
+
     </style>
     <script type="application/ld+json">
     {
@@ -456,7 +489,8 @@
         <p>Discover other tools: <a href="keywords-grouping.html">Keyword Grouping Tool</a>, <a href="Slug-Generator.html">Slug Generator</a>, and <a href="Keyword-Density-And-Wordcount-Tool.html">Keyword Density Tool</a>.</p>
 
     </div>
-         <h3>Share This Site</h3>
+        <div class="share-container">
+    <h3>Share This Site</h3>
     <div class="share-icons">
         <a href="https://www.facebook.com/sharer/sharer.php?u=https://keywordsfromurls.com" 
            class="facebook" target="_blank" title="Share on Facebook">
@@ -475,7 +509,8 @@
             W
         </a>
     </div>
-        
+</div>
+
 
      <!-- Footer -->
     <footer class="footer"><div class="left">&copy; 2025 Keywords From Urls | <a href="//www.dmca.com/Protection/Status.aspx?ID=6cf02a5f-5f1e-483c-88f4-70ff117b638f" title="DMCA.com Protection Status" class="dmca-badge"> 
