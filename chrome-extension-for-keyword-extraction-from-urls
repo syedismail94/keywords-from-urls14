@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keywords from URLs Chrome Extension</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1, h2 {
+            color: #0073e6;
+        }
+        a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #0073e6;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background-color: #005bb5;
+        }
+        ul {
+            list-style: disc;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Keywords from URLs Chrome Extension</h1>
+        <p>
+            The <strong>Keywords from URLs Chrome Extension</strong> is designed to make keyword extraction, grouping, and analysis simple and efficient. This tool is perfect for bloggers, SEO professionals, and content creators who want to optimize their workflow directly from their browser.
+        </p>
+
+        <h2>Features</h2>
+        <ul>
+            <li><strong>Keyword Extractor:</strong> Extract meaningful keywords from URLs effortlessly.</li>
+            <li><strong>Keyword Grouping:</strong> Group related keywords for better analysis and targeting.</li>
+            <li><strong>Keyword Density:</strong> Analyze keyword density in your content for SEO optimization.</li>
+            <li><strong>Slug Generator:</strong> Generate SEO-friendly slugs from text or URLs.</li>
+        </ul>
+
+        <h2>How to Use</h2>
+        <p>
+            Simply download and install the extension from the Chrome Web Store, then click on the extension icon to access its tools. Use the intuitive interface to extract keywords, group them, analyze density, or generate slugs.
+        </p>
+
+        <a href="#" class="button">Download Chrome Extension</a>
+
+        <h2>FAQs</h2>
+        <p><strong>Q:</strong> Does this extension collect any user data?<br>
+           <strong>A:</strong> No, the extension does not collect or store any user data.</p>
+        <p><strong>Q:</strong> Can I use this extension for free?<br>
+           <strong>A:</strong> Yes, the extension is free to use.</p>
+
+        <h2>Support</h2>
+        <p>
+            If you have any questions or encounter issues contact us at <a href="mailto:isyed486@gmail.com">isyed486@gmail.com</a>.
+        </p>
+    </div>
+
+    <!-- Support Page Content -->
+    <div class="container" id="support">
+        <h1>Support</h1>
+        <p>
+            Welcome to the support page for the <strong>Keywords from URLs Chrome Extension</strong>. Here you can find solutions to common issues, troubleshooting tips, and contact information.
+        </p>
+
+        <h2>Common Issues</h2>
+        <ul>
+            <li><strong>Extension not working:</strong> Ensure the extension is enabled in <code>chrome://extensions</code>.</li>
+            <li><strong>Permissions error:</strong> Make sure the extension has the necessary permissions enabled.</li>
+        </ul>
+
+        <h2>Contact Us</h2>
+        <p>
+            Still need help? Reach out to us:
+        </p>
+        <ul>
+            <li>Email: <a href="mailto:support@keywordsfromurls.com">support@keywordsfromurls.com</a></li>
+            <li>Visit: <a href="https://keywordsfromurls.com">Our Website</a></li>
+        </ul>
+
+        <p>
+            We're here to help you get the most out of the Keywords from URLs Chrome Extension.
+        </p>
+    </div>
+</body>
+</html>
