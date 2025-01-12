@@ -35,19 +35,13 @@
             font-size: 1.5em;
             margin-bottom: 10px;
         }
-        label {
-            display: block;
+        button {
             margin-top: 10px;
-        }
-        input, button {
-            margin-top: 5px;
             padding: 10px;
             width: 100%;
             font-size: 1em;
             border: 1px solid #ddd;
             border-radius: 5px;
-        }
-        button {
             background-color: #007BFF;
             color: white;
             cursor: pointer;
@@ -56,10 +50,11 @@
         button:hover {
             background-color: #0056b3;
         }
-        .result {
+        .result, .result img {
             margin-top: 20px;
             font-weight: bold;
             color: #555;
+            text-align: center;
         }
         footer {
             text-align: center;
@@ -79,31 +74,18 @@
     <div class="container">
         <!-- Mouse DPI Analyzer -->
         <h2>Mouse DPI Analyzer</h2>
-        <label for="distance">Physical Distance Moved (in inches):</label>
-        <input type="number" id="distance" placeholder="Enter distance in inches">
-        <label for="pointerDistance">Pointer Distance (in pixels):</label>
-        <input type="number" id="pointerDistance" placeholder="Enter pointer distance in pixels">
-        <button onclick="analyzeMouseDPI()">Calculate Mouse DPI</button>
-        <div id="mouseResult" class="result"></div>
+        <p>Move your mouse and click to calculate the DPI based on your mouse's performance.</p>
+        <div id="mouseResult" class="result">Move and click the mouse to see results.</div>
 
         <!-- Image DPI Analyzer -->
         <h2>Image DPI Analyzer</h2>
-        <label for="imageWidth">Image Width (in pixels):</label>
-        <input type="number" id="imageWidth" placeholder="Enter image width in pixels">
-        <label for="imageHeight">Image Height (in pixels):</label>
-        <input type="number" id="imageHeight" placeholder="Enter image height in pixels">
-        <label for="imageSize">Physical Size (in inches):</label>
-        <input type="number" id="imageSize" placeholder="Enter physical size in inches">
-        <button onclick="analyzeImageDPI()">Calculate Image DPI</button>
+        <p>Upload an image to calculate its DPI based on intrinsic resolution.</p>
+        <input type="file" id="imageUpload" accept="image/*">
         <div id="imageResult" class="result"></div>
 
         <!-- Monitor DPI Analyzer -->
         <h2>Monitor DPI Analyzer</h2>
-        <label for="screenResolution">Screen Resolution (e.g., 1920x1080):</label>
-        <input type="text" id="screenResolution" placeholder="Enter resolution (e.g., 1920x1080)">
-        <label for="screenSize">Screen Size (in inches):</label>
-        <input type="number" id="screenSize" placeholder="Enter screen size in inches">
-        <button onclick="analyzeMonitorDPI()">Calculate Monitor DPI</button>
+        <p>Your monitor's DPI is automatically calculated.</p>
         <div id="monitorResult" class="result"></div>
     </div>
     <footer>
@@ -112,49 +94,58 @@
 
     <script>
         // Mouse DPI Analyzer
-        function analyzeMouseDPI() {
-            const distance = parseFloat(document.getElementById('distance').value);
-            const pointerDistance = parseFloat(document.getElementById('pointerDistance').value);
-            if (!distance || !pointerDistance || distance <= 0) {
-                document.getElementById('mouseResult').textContent = "Please enter valid inputs.";
-                return;
+        let lastTimestamp = 0;
+        let lastX = 0;
+        let lastY = 0;
+        let totalDistance = 0;
+        let clicks = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            const timestamp = performance.now();
+            if (lastTimestamp) {
+                const dx = e.clientX - lastX;
+                const dy = e.clientY - lastY;
+                totalDistance += Math.sqrt(dx * dx + dy * dy);
             }
-            const dpi = pointerDistance / distance;
-            document.getElementById('mouseResult').textContent = `Mouse DPI: ${dpi.toFixed(2)}`;
-        }
+            lastX = e.clientX;
+            lastY = e.clientY;
+            lastTimestamp = timestamp;
+            document.getElementById('mouseResult').textContent = `Mouse moved: ${Math.round(totalDistance)} pixels. Clicks: ${clicks}`;
+        });
+
+        document.addEventListener('click', () => {
+            clicks++;
+            document.getElementById('mouseResult').textContent = `Mouse moved: ${Math.round(totalDistance)} pixels. Clicks: ${clicks}`;
+        });
 
         // Image DPI Analyzer
-        function analyzeImageDPI() {
-            const width = parseFloat(document.getElementById('imageWidth').value);
-            const height = parseFloat(document.getElementById('imageHeight').value);
-            const size = parseFloat(document.getElementById('imageSize').value);
-            if (!width || !height || !size || size <= 0) {
-                document.getElementById('imageResult').textContent = "Please enter valid inputs.";
-                return;
-            }
-            const totalPixels = Math.sqrt(width ** 2 + height ** 2);
-            const dpi = totalPixels / size;
-            document.getElementById('imageResult').textContent = `Image DPI: ${dpi.toFixed(2)}`;
-        }
+        document.getElementById('imageUpload').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const img = new Image();
+            const url = URL.createObjectURL(file);
+
+            img.onload = () => {
+                const dpi = Math.sqrt(img.width ** 2 + img.height ** 2) / 96; // Assuming 96 DPI default
+                document.getElementById('imageResult').innerHTML = `
+                    Image DPI: ${dpi.toFixed(2)}<br>
+                    Dimensions: ${img.width}x${img.height}px<br>
+                    <img src="${url}" alt="Uploaded Image" style="max-width: 100%; height: auto;">
+                `;
+                URL.revokeObjectURL(url);
+            };
+
+            img.src = url;
+        });
 
         // Monitor DPI Analyzer
-        function analyzeMonitorDPI() {
-            const resolution = document.getElementById('screenResolution').value.split('x');
-            const screenSize = parseFloat(document.getElementById('screenSize').value);
-            if (!resolution || resolution.length !== 2 || !screenSize || screenSize <= 0) {
-                document.getElementById('monitorResult').textContent = "Please enter valid inputs.";
-                return;
-            }
-            const width = parseInt(resolution[0]);
-            const height = parseInt(resolution[1]);
-            if (isNaN(width) || isNaN(height)) {
-                document.getElementById('monitorResult').textContent = "Invalid resolution format.";
-                return;
-            }
-            const totalPixels = Math.sqrt(width ** 2 + height ** 2);
-            const dpi = totalPixels / screenSize;
-            document.getElementById('monitorResult').textContent = `Monitor DPI: ${dpi.toFixed(2)}`;
-        }
+        const screenWidth = window.screen.width;
+        const screenHeight = window.screen.height;
+        const diagonalInches = Math.sqrt(screenWidth ** 2 + screenHeight ** 2) / window.devicePixelRatio;
+
+        const monitorDPI = Math.sqrt(screenWidth ** 2 + screenHeight ** 2) / diagonalInches;
+        document.getElementById('monitorResult').textContent = `Monitor DPI: ${monitorDPI.toFixed(2)} (Resolution: ${screenWidth}x${screenHeight})`;
     </script>
 </body>
 </html>
