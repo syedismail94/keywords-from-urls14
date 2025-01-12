@@ -33,20 +33,30 @@
         }
         #mouseBox {
             width: 100%;
-            height: 100px;
+            height: 400px;
             background-color: #e9ecef;
             position: relative;
             overflow: hidden;
             margin-bottom: 1rem;
         }
-        #scale {
+        .scale {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 20px;
             background-color: #f8f9fa;
         }
+        #scaleLeftRight, #scaleRightLeft {
+            height: 20px;
+            left: 0;
+            right: 0;
+        }
+        #scaleUpDown, #scaleDownUp {
+            width: 20px;
+            top: 0;
+            bottom: 0;
+        }
+        #scaleLeftRight { top: 0; }
+        #scaleRightLeft { bottom: 0; }
+        #scaleUpDown { left: 0; }
+        #scaleDownUp { right: 0; }
         #mouse {
             width: 20px;
             height: 20px;
@@ -54,15 +64,15 @@
             border-radius: 50%;
             position: absolute;
             top: 50%;
-            left: 0;
-            transform: translateY(-50%);
+            left: 50%;
+            transform: translate(-50%, -50%);
             cursor: pointer;
         }
         #result {
             margin-top: 1rem;
             font-weight: bold;
         }
-        input[type="file"], input[type="number"] {
+        input[type="file"] {
             margin-bottom: 1rem;
         }
         table {
@@ -78,14 +88,6 @@
         th {
             background-color: #f2f2f2;
         }
-        #stopLine {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: red;
-            z-index: 10;
-        }
     </style>
 </head>
 <body>
@@ -97,14 +99,13 @@
         <section class="analyzer">
             <h2>Mouse DPI Analyzer</h2>
             <div id="mouseBox">
-                <div id="scale"></div>
+                <div id="scaleLeftRight" class="scale"></div>
+                <div id="scaleRightLeft" class="scale"></div>
+                <div id="scaleUpDown" class="scale"></div>
+                <div id="scaleDownUp" class="scale"></div>
                 <div id="mouse"></div>
-                <div id="stopLine"></div>
             </div>
             <div id="result">Move the mouse to see results</div>
-            <label for="physicalDistance">Enter physical distance (inches):</label>
-            <input type="number" id="physicalDistance" step="0.1" min="0">
-            <button id="calculateDPI">Calculate DPI</button>
         </section>
 
         <section class="analyzer">
@@ -140,58 +141,76 @@
         const mouseBox = document.getElementById('mouseBox');
         const mouse = document.getElementById('mouse');
         const result = document.getElementById('result');
-        const scale = document.getElementById('scale');
-        const stopLine = document.getElementById('stopLine');
-        const physicalDistanceInput = document.getElementById('physicalDistance');
-        const calculateDPIButton = document.getElementById('calculateDPI');
+        const scaleLeftRight = document.getElementById('scaleLeftRight');
+        const scaleRightLeft = document.getElementById('scaleRightLeft');
+        const scaleUpDown = document.getElementById('scaleUpDown');
+        const scaleDownUp = document.getElementById('scaleDownUp');
 
         let isDragging = false;
-        let startX;
+        let startX, startY;
         let pixelDistance = 0;
-        const stopDistance = 7.4; // cm
+        const stopDistance = 7.4 * 96; // 7.4 inches in pixels
 
-        function updateScale() {
+        function updateScales() {
             const boxWidth = mouseBox.offsetWidth;
-            let scaleHTML = '';
-            for (let i = 0; i <= boxWidth; i += 50) {
-                const inches = (i / 96).toFixed(1);
-                const cm = (i / 37.8).toFixed(1);
-                scaleHTML += `<div style="position:absolute;left:${i}px;top:0;height:10px;border-left:1px solid #333;"></div>`;
-                scaleHTML += `<div style="position:absolute;left:${i}px;top:10px;font-size:10px;">${inches}"<br>${cm}cm</div>`;
+            const boxHeight = mouseBox.offsetHeight;
+            
+            function createScaleMarkers(scale, isVertical) {
+                let scaleHTML = '';
+                const maxDistance = isVertical ? boxHeight : boxWidth;
+                for (let i = 0; i <= maxDistance; i += 48) { // 48 pixels = 0.5 inches
+                    const inches = (i / 96).toFixed(1);
+                    const position = isVertical ? `top: ${i}px;` : `left: ${i}px;`;
+                    const size = isVertical ? 'width: 10px;' : 'height: 10px;';
+                    scaleHTML += `<div style="position:absolute;${position}${size}border-${isVertical ? 'top' : 'left'}:1px solid #333;"></div>`;
+                    scaleHTML += `<div style="position:absolute;${position}font-size:10px;${isVertical ? 'left' : 'top'}:20px;">${inches}"</div>`;
+                }
+                scale.innerHTML = scaleHTML;
             }
-            scale.innerHTML = scaleHTML;
 
-            // Position the stop line
-            const stopPixels = stopDistance * 37.8;
-            stopLine.style.left = `${stopPixels}px`;
+            createScaleMarkers(scaleLeftRight, false);
+            createScaleMarkers(scaleRightLeft, false);
+            createScaleMarkers(scaleUpDown, true);
+            createScaleMarkers(scaleDownUp, true);
         }
 
         function updateMousePosition(e) {
             const boxRect = mouseBox.getBoundingClientRect();
-            let mouseX = e.clientX - boxRect.left;
-            mouseX = Math.max(0, Math.min(mouseX, boxRect.width));
+            let mouseX = e.clientX - boxRect.left - mouse.offsetWidth / 2;
+            let mouseY = e.clientY - boxRect.top - mouse.offsetHeight / 2;
 
-            // Stop at 7.4 cm
-            const stopPixels = stopDistance * 37.8;
-            mouseX = Math.min(mouseX, stopPixels);
+            mouseX = Math.max(0, Math.min(mouseX, boxRect.width - mouse.offsetWidth));
+            mouseY = Math.max(0, Math.min(mouseY, boxRect.height - mouse.offsetHeight));
+
+            const centerX = boxRect.width / 2;
+            const centerY = boxRect.height / 2;
+
+            const dx = mouseX - centerX;
+            const dy = mouseY - centerY;
+            pixelDistance = Math.sqrt(dx * dx + dy * dy);
+
+            if (pixelDistance > stopDistance) {
+                const angle = Math.atan2(dy, dx);
+                mouseX = centerX + Math.cos(angle) * stopDistance;
+                mouseY = centerY + Math.sin(angle) * stopDistance;
+                pixelDistance = stopDistance;
+            }
 
             mouse.style.left = `${mouseX}px`;
-            pixelDistance = mouseX;
+            mouse.style.top = `${mouseY}px`;
+
             const distanceInches = (pixelDistance / 96).toFixed(2);
-            const distanceCm = (pixelDistance / 37.8).toFixed(2);
+            const dpi = Math.round((window.devicePixelRatio * 96 * pixelDistance) / (7.4 * 96));
+
             result.innerHTML = `
                 Pixel Distance: ${pixelDistance.toFixed(2)}px<br>
-                Distance: ${distanceInches}" (${distanceCm} cm)
+                Distance: ${distanceInches}"<br>
+                Calculated DPI: ${dpi}
             `;
-
-            // Rotate the mouse
-            const rotation = (mouseX / stopPixels) * 360;
-            mouse.style.transform = `translateY(-50%) rotate(${rotation}deg)`;
         }
 
         mouseBox.addEventListener('mousedown', (e) => {
             isDragging = true;
-            startX = e.clientX - mouse.offsetLeft;
             updateMousePosition(e);
         });
 
@@ -203,16 +222,6 @@
 
         document.addEventListener('mouseup', () => {
             isDragging = false;
-        });
-
-        calculateDPIButton.addEventListener('click', () => {
-            const physicalDistance = parseFloat(physicalDistanceInput.value);
-            if (physicalDistance && pixelDistance) {
-                const dpi = pixelDistance / physicalDistance;
-                result.innerHTML += `<br>DPI: ${dpi.toFixed(2)}`;
-            } else {
-                result.innerHTML += '<br>Please provide both pixel distance and physical distance.';
-            }
         });
 
         // Image DPI Analyzer
@@ -273,10 +282,10 @@
         }
 
         // Initialize
-        updateScale();
+        updateScales();
         calculateMonitorDPI();
         populateDeviceTable();
-        window.addEventListener('resize', updateScale);
+        window.addEventListener('resize', updateScales);
     </script>
 </body>
 </html>
