@@ -3,149 +3,255 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DPI Analyzer</title>
+    <title>DPI Analyzer Tool</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
+            line-height: 1.6;
             color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
         }
         header {
-            background-color: #007BFF;
+            background-color: #4a90e2;
             color: white;
-            padding: 20px;
             text-align: center;
+            padding: 1rem;
+            margin-bottom: 2rem;
         }
-        h1 {
-            margin: 0;
-            font-size: 2em;
+        h1, h2 {
+            margin-bottom: 1rem;
         }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
+        .analyzer {
+            background-color: white;
+            border-radius: 8px;
             padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        h2 {
-            color: #007BFF;
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-        button {
-            margin-top: 10px;
-            padding: 10px;
+        #mouseBox {
             width: 100%;
-            font-size: 1em;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #007BFF;
-            color: white;
+            height: 100px;
+            background-color: #e9ecef;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        #scale {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background-color: #f8f9fa;
+        }
+        #mouse {
+            width: 20px;
+            height: 20px;
+            background-color: #4a90e2;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
             cursor: pointer;
-            transition: background-color 0.3s;
         }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .result, .result img {
-            margin-top: 20px;
+        #result {
+            margin-top: 1rem;
             font-weight: bold;
-            color: #555;
-            text-align: center;
         }
-        footer {
-            text-align: center;
-            padding: 10px 0;
-            background-color: #007BFF;
-            color: white;
-            position: fixed;
-            bottom: 0;
+        input[type="file"], input[type="number"] {
+            margin-bottom: 1rem;
+        }
+        table {
             width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>DPI Analyzer</h1>
+        <h1>DPI Analyzer Tool</h1>
     </header>
-    <div class="container">
-        <!-- Mouse DPI Analyzer -->
-        <h2>Mouse DPI Analyzer</h2>
-        <p>Move your mouse and click to calculate the DPI based on your mouse's performance.</p>
-        <div id="mouseResult" class="result">Move and click the mouse to see results.</div>
 
-        <!-- Image DPI Analyzer -->
-        <h2>Image DPI Analyzer</h2>
-        <p>Upload an image to calculate its DPI based on intrinsic resolution.</p>
-        <input type="file" id="imageUpload" accept="image/*">
-        <div id="imageResult" class="result"></div>
+    <main>
+        <section class="analyzer">
+            <h2>Mouse DPI Analyzer</h2>
+            <div id="mouseBox">
+                <div id="scale"></div>
+                <div id="mouse"></div>
+            </div>
+            <div id="result">Move the mouse to see results</div>
+            <label for="physicalDistance">Enter physical distance (inches):</label>
+            <input type="number" id="physicalDistance" step="0.1" min="0">
+            <button id="calculateDPI">Calculate DPI</button>
+        </section>
 
-        <!-- Monitor DPI Analyzer -->
-        <h2>Monitor DPI Analyzer</h2>
-        <p>Your monitor's DPI is automatically calculated.</p>
-        <div id="monitorResult" class="result"></div>
-    </div>
-    <footer>
-        &copy; 2025 DPI Analyzer Tool
-    </footer>
+        <section class="analyzer">
+            <h2>Image DPI Analyzer</h2>
+            <input type="file" id="imageUpload" accept="image/*">
+            <div id="imageResult"></div>
+        </section>
+
+        <section class="analyzer">
+            <h2>Monitor DPI Analyzer</h2>
+            <div id="monitorResult"></div>
+        </section>
+
+        <section class="analyzer">
+            <h2>Common Device DPIs</h2>
+            <table id="deviceTable">
+                <thead>
+                    <tr>
+                        <th>Device</th>
+                        <th>DPI</th>
+                        <th>Resolution</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Table rows will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </section>
+    </main>
 
     <script>
         // Mouse DPI Analyzer
-        let lastTimestamp = 0;
-        let lastX = 0;
-        let lastY = 0;
-        let totalDistance = 0;
-        let clicks = 0;
+        const mouseBox = document.getElementById('mouseBox');
+        const mouse = document.getElementById('mouse');
+        const result = document.getElementById('result');
+        const scale = document.getElementById('scale');
+        const physicalDistanceInput = document.getElementById('physicalDistance');
+        const calculateDPIButton = document.getElementById('calculateDPI');
 
-        document.addEventListener('mousemove', (e) => {
-            const timestamp = performance.now();
-            if (lastTimestamp) {
-                const dx = e.clientX - lastX;
-                const dy = e.clientY - lastY;
-                totalDistance += Math.sqrt(dx * dx + dy * dy);
+        let isDragging = false;
+        let startX;
+        let pixelDistance = 0;
+
+        function updateScale() {
+            const boxWidth = mouseBox.offsetWidth;
+            let scaleHTML = '';
+            for (let i = 0; i <= boxWidth; i += 50) {
+                const inches = (i / 96).toFixed(1);
+                const cm = (i / 37.8).toFixed(1);
+                scaleHTML += `<div style="position:absolute;left:${i}px;top:0;height:10px;border-left:1px solid #333;"></div>`;
+                scaleHTML += `<div style="position:absolute;left:${i}px;top:10px;font-size:10px;">${inches}"<br>${cm}cm</div>`;
             }
-            lastX = e.clientX;
-            lastY = e.clientY;
-            lastTimestamp = timestamp;
-            document.getElementById('mouseResult').textContent = `Mouse moved: ${Math.round(totalDistance)} pixels. Clicks: ${clicks}`;
+            scale.innerHTML = scaleHTML;
+        }
+
+        function updateMousePosition(e) {
+            const boxRect = mouseBox.getBoundingClientRect();
+            let mouseX = e.clientX - boxRect.left;
+            mouseX = Math.max(0, Math.min(mouseX, boxRect.width));
+            mouse.style.left = `${mouseX}px`;
+            pixelDistance = mouseX;
+            result.textContent = `Pixel Distance: ${pixelDistance.toFixed(2)}px`;
+
+            // Rotate the mouse
+            const rotation = (mouseX / boxRect.width) * 360;
+            mouse.style.transform = `translateY(-50%) rotate(${rotation}deg)`;
+        }
+
+        mouseBox.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX - mouse.offsetLeft;
+            updateMousePosition(e);
         });
 
-        document.addEventListener('click', () => {
-            clicks++;
-            document.getElementById('mouseResult').textContent = `Mouse moved: ${Math.round(totalDistance)} pixels. Clicks: ${clicks}`;
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                updateMousePosition(e);
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        calculateDPIButton.addEventListener('click', () => {
+            const physicalDistance = parseFloat(physicalDistanceInput.value);
+            if (physicalDistance && pixelDistance) {
+                const dpi = pixelDistance / physicalDistance;
+                result.textContent = `Pixel Distance: ${pixelDistance.toFixed(2)}px, DPI: ${dpi.toFixed(2)}`;
+            } else {
+                result.textContent = 'Please provide both pixel distance and physical distance.';
+            }
         });
 
         // Image DPI Analyzer
-        document.getElementById('imageUpload').addEventListener('change', (e) => {
+        const imageUpload = document.getElementById('imageUpload');
+        const imageResult = document.getElementById('imageResult');
+
+        imageUpload.addEventListener('change', (e) => {
             const file = e.target.files[0];
-            if (!file) return;
-
-            const img = new Image();
-            const url = URL.createObjectURL(file);
-
-            img.onload = () => {
-                const dpi = Math.sqrt(img.width ** 2 + img.height ** 2) / 96; // Assuming 96 DPI default
-                document.getElementById('imageResult').innerHTML = `
-                    Image DPI: ${dpi.toFixed(2)}<br>
-                    Dimensions: ${img.width}x${img.height}px<br>
-                    <img src="${url}" alt="Uploaded Image" style="max-width: 100%; height: auto;">
-                `;
-                URL.revokeObjectURL(url);
-            };
-
-            img.src = url;
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        const dpi = Math.sqrt(img.width * img.width + img.height * img.height) / Math.sqrt(2);
+                        imageResult.innerHTML = `
+                            <p>Image dimensions: ${img.width}x${img.height}px</p>
+                            <p>Estimated DPI: ${dpi.toFixed(2)}</p>
+                            <img src="${event.target.result}" alt="Uploaded image" style="max-width: 100%; height: auto;">
+                        `;
+                    };
+                    img.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
         });
 
         // Monitor DPI Analyzer
-        const screenWidth = window.screen.width;
-        const screenHeight = window.screen.height;
-        const diagonalInches = Math.sqrt(screenWidth ** 2 + screenHeight ** 2) / window.devicePixelRatio;
+        const monitorResult = document.getElementById('monitorResult');
 
-        const monitorDPI = Math.sqrt(screenWidth ** 2 + screenHeight ** 2) / diagonalInches;
-        document.getElementById('monitorResult').textContent = `Monitor DPI: ${monitorDPI.toFixed(2)} (Resolution: ${screenWidth}x${screenHeight})`;
+        function calculateMonitorDPI() {
+            const dpi = window.devicePixelRatio * 96;
+            const width = window.screen.width * window.devicePixelRatio;
+            const height = window.screen.height * window.devicePixelRatio;
+            monitorResult.innerHTML = `
+                <p>Estimated Monitor DPI: ${dpi.toFixed(2)}</p>
+                <p>Screen Resolution: ${width}x${height}</p>
+            `;
+        }
+
+        // Common Device DPIs
+        const deviceTable = document.getElementById('deviceTable').getElementsByTagName('tbody')[0];
+        const commonDevices = [
+            { name: 'iPhone 12 Pro', dpi: 460, resolution: '2532x1170' },
+            { name: 'Samsung Galaxy S21', dpi: 421, resolution: '2400x1080' },
+            { name: 'iPad Pro 12.9"', dpi: 264, resolution: '2732x2048' },
+            { name: 'MacBook Pro 16"', dpi: 226, resolution: '3072x1920' },
+            { name: '4K Monitor', dpi: 163, resolution: '3840x2160' },
+            // Add more devices here
+        ];
+
+        function populateDeviceTable() {
+            commonDevices.forEach(device => {
+                const row = deviceTable.insertRow();
+                row.insertCell(0).textContent = device.name;
+                row.insertCell(1).textContent = device.dpi;
+                row.insertCell(2).textContent = device.resolution;
+            });
+        }
+
+        // Initialize
+        updateScale();
+        calculateMonitorDPI();
+        populateDeviceTable();
+        window.addEventListener('resize', updateScale);
     </script>
 </body>
 </html>
