@@ -43,20 +43,35 @@
             position: absolute;
             background-color: #f8f9fa;
         }
-        #scaleLeftRight, #scaleRightLeft {
+        #scaleHorizontal {
             height: 20px;
             left: 0;
             right: 0;
+            top: 190px;
         }
-        #scaleUpDown, #scaleDownUp {
+        #scaleVertical {
             width: 20px;
             top: 0;
             bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
         }
-        #scaleLeftRight { top: 0; }
-        #scaleRightLeft { bottom: 0; }
-        #scaleUpDown { left: 0; }
-        #scaleDownUp { right: 0; }
+        #horizontalLine, #verticalLine {
+            position: absolute;
+            background-color: #4a90e2;
+        }
+        #horizontalLine {
+            height: 2px;
+            left: 0;
+            right: 0;
+            top: 50%;
+        }
+        #verticalLine {
+            width: 2px;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+        }
         #mouse {
             width: 20px;
             height: 20px;
@@ -99,10 +114,10 @@
         <section class="analyzer">
             <h2>Mouse DPI Analyzer</h2>
             <div id="mouseBox">
-                <div id="scaleLeftRight" class="scale"></div>
-                <div id="scaleRightLeft" class="scale"></div>
-                <div id="scaleUpDown" class="scale"></div>
-                <div id="scaleDownUp" class="scale"></div>
+                <div id="scaleHorizontal" class="scale"></div>
+                <div id="scaleVertical" class="scale"></div>
+                <div id="horizontalLine"></div>
+                <div id="verticalLine"></div>
                 <div id="mouse"></div>
             </div>
             <div id="result">Move the mouse to see results</div>
@@ -141,13 +156,11 @@
         const mouseBox = document.getElementById('mouseBox');
         const mouse = document.getElementById('mouse');
         const result = document.getElementById('result');
-        const scaleLeftRight = document.getElementById('scaleLeftRight');
-        const scaleRightLeft = document.getElementById('scaleRightLeft');
-        const scaleUpDown = document.getElementById('scaleUpDown');
-        const scaleDownUp = document.getElementById('scaleDownUp');
+        const scaleHorizontal = document.getElementById('scaleHorizontal');
+        const scaleVertical = document.getElementById('scaleVertical');
 
         let isDragging = false;
-        let startX, startY;
+        let isHorizontal = true;
         let pixelDistance = 0;
         const stopDistance = 7.4 * 96; // 7.4 inches in pixels
 
@@ -168,31 +181,35 @@
                 scale.innerHTML = scaleHTML;
             }
 
-            createScaleMarkers(scaleLeftRight, false);
-            createScaleMarkers(scaleRightLeft, false);
-            createScaleMarkers(scaleUpDown, true);
-            createScaleMarkers(scaleDownUp, true);
+            createScaleMarkers(scaleHorizontal, false);
+            createScaleMarkers(scaleVertical, true);
         }
 
         function updateMousePosition(e) {
             const boxRect = mouseBox.getBoundingClientRect();
-            let mouseX = e.clientX - boxRect.left - mouse.offsetWidth / 2;
-            let mouseY = e.clientY - boxRect.top - mouse.offsetHeight / 2;
-
-            mouseX = Math.max(0, Math.min(mouseX, boxRect.width - mouse.offsetWidth));
-            mouseY = Math.max(0, Math.min(mouseY, boxRect.height - mouse.offsetHeight));
-
             const centerX = boxRect.width / 2;
             const centerY = boxRect.height / 2;
 
-            const dx = mouseX - centerX;
-            const dy = mouseY - centerY;
-            pixelDistance = Math.sqrt(dx * dx + dy * dy);
+            let mouseX, mouseY;
+
+            if (isHorizontal) {
+                mouseX = e.clientX - boxRect.left - mouse.offsetWidth / 2;
+                mouseX = Math.max(0, Math.min(mouseX, boxRect.width - mouse.offsetWidth));
+                mouseY = centerY - mouse.offsetHeight / 2;
+                pixelDistance = Math.abs(mouseX - centerX);
+            } else {
+                mouseX = centerX - mouse.offsetWidth / 2;
+                mouseY = e.clientY - boxRect.top - mouse.offsetHeight / 2;
+                mouseY = Math.max(0, Math.min(mouseY, boxRect.height - mouse.offsetHeight));
+                pixelDistance = Math.abs(mouseY - centerY);
+            }
 
             if (pixelDistance > stopDistance) {
-                const angle = Math.atan2(dy, dx);
-                mouseX = centerX + Math.cos(angle) * stopDistance;
-                mouseY = centerY + Math.sin(angle) * stopDistance;
+                if (isHorizontal) {
+                    mouseX = mouseX > centerX ? centerX + stopDistance : centerX - stopDistance;
+                } else {
+                    mouseY = mouseY > centerY ? centerY + stopDistance : centerY - stopDistance;
+                }
                 pixelDistance = stopDistance;
             }
 
@@ -211,6 +228,14 @@
 
         mouseBox.addEventListener('mousedown', (e) => {
             isDragging = true;
+            const boxRect = mouseBox.getBoundingClientRect();
+            const centerX = boxRect.width / 2;
+            const centerY = boxRect.height / 2;
+            const clickX = e.clientX - boxRect.left;
+            const clickY = e.clientY - boxRect.top;
+
+            isHorizontal = Math.abs(clickY - centerY) < Math.abs(clickX - centerX);
+
             updateMousePosition(e);
         });
 
