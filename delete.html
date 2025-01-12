@@ -78,6 +78,14 @@
         th {
             background-color: #f2f2f2;
         }
+        #stopLine {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: red;
+            z-index: 10;
+        }
     </style>
 </head>
 <body>
@@ -91,6 +99,7 @@
             <div id="mouseBox">
                 <div id="scale"></div>
                 <div id="mouse"></div>
+                <div id="stopLine"></div>
             </div>
             <div id="result">Move the mouse to see results</div>
             <label for="physicalDistance">Enter physical distance (inches):</label>
@@ -132,12 +141,14 @@
         const mouse = document.getElementById('mouse');
         const result = document.getElementById('result');
         const scale = document.getElementById('scale');
+        const stopLine = document.getElementById('stopLine');
         const physicalDistanceInput = document.getElementById('physicalDistance');
         const calculateDPIButton = document.getElementById('calculateDPI');
 
         let isDragging = false;
         let startX;
         let pixelDistance = 0;
+        const stopDistance = 7.4; // cm
 
         function updateScale() {
             const boxWidth = mouseBox.offsetWidth;
@@ -149,18 +160,32 @@
                 scaleHTML += `<div style="position:absolute;left:${i}px;top:10px;font-size:10px;">${inches}"<br>${cm}cm</div>`;
             }
             scale.innerHTML = scaleHTML;
+
+            // Position the stop line
+            const stopPixels = stopDistance * 37.8;
+            stopLine.style.left = `${stopPixels}px`;
         }
 
         function updateMousePosition(e) {
             const boxRect = mouseBox.getBoundingClientRect();
             let mouseX = e.clientX - boxRect.left;
             mouseX = Math.max(0, Math.min(mouseX, boxRect.width));
+
+            // Stop at 7.4 cm
+            const stopPixels = stopDistance * 37.8;
+            mouseX = Math.min(mouseX, stopPixels);
+
             mouse.style.left = `${mouseX}px`;
             pixelDistance = mouseX;
-            result.textContent = `Pixel Distance: ${pixelDistance.toFixed(2)}px`;
+            const distanceInches = (pixelDistance / 96).toFixed(2);
+            const distanceCm = (pixelDistance / 37.8).toFixed(2);
+            result.innerHTML = `
+                Pixel Distance: ${pixelDistance.toFixed(2)}px<br>
+                Distance: ${distanceInches}" (${distanceCm} cm)
+            `;
 
             // Rotate the mouse
-            const rotation = (mouseX / boxRect.width) * 360;
+            const rotation = (mouseX / stopPixels) * 360;
             mouse.style.transform = `translateY(-50%) rotate(${rotation}deg)`;
         }
 
@@ -184,9 +209,9 @@
             const physicalDistance = parseFloat(physicalDistanceInput.value);
             if (physicalDistance && pixelDistance) {
                 const dpi = pixelDistance / physicalDistance;
-                result.textContent = `Pixel Distance: ${pixelDistance.toFixed(2)}px, DPI: ${dpi.toFixed(2)}`;
+                result.innerHTML += `<br>DPI: ${dpi.toFixed(2)}`;
             } else {
-                result.textContent = 'Please provide both pixel distance and physical distance.';
+                result.innerHTML += '<br>Please provide both pixel distance and physical distance.';
             }
         });
 
