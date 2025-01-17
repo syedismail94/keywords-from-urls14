@@ -158,44 +158,54 @@
                 flex-direction: column;
             }
             
-        .faq-section {
-  margin: 20px 0;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+       /* FAQ Section */
+.faq-section {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .faq-section h2 {
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #007BFF;
+}
+
+/* FAQ Container */
+.faq-container {
+    margin-top: 10px;
 }
 
 .faq-item {
-  margin-bottom: 15px;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #f9f9f9;
+    transition: background 0.3s;
 }
 
-.faq-item h3 {
-  font-size: 18px;
-  color: #007BFF;
-  cursor: pointer;
-  margin: 0;
+.faq-item:hover {
+    background: #f1f1f1;
 }
 
-.faq-item h3:hover {
-  text-decoration: underline;
+/* FAQ Question */
+.faq-question {
+    margin: 0;
+    font-size: 18px;
+    color: #007BFF;
+    font-weight: bold;
 }
 
-.faq-item p {
-  font-size: 16px;
-  color: #555;
-  margin: 5px 0 0;
-  display: none;
-}
-
-.faq-item.active p {
-  display: block;
+/* FAQ Answer */
+.faq-answer {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #555;
 }
    </style>
     <script type="application/ld+json">
@@ -280,23 +290,34 @@
             This tool is designed to assist bloggers in grouping keywords effectively. Feel free to share suggestions!
         </p>
     </div>
-        <div class="faq-section">
-  <h2>Frequently Asked Questions</h2>
+       <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <!-- FAQ 1 -->
+            <div class="faq-item">
+                <h3 class="faq-question">What is keyword grouping?</h3>
+                <p class="faq-answer">
+                    Keyword grouping is the process of organizing keywords into clusters or groups based on their relevance to a specific topic or theme. This helps in creating focused content for SEO.
+                </p>
+            </div>
 
-  <div class="faq-item">
-    <h3>What is the Keyword Grouping Tool?</h3>
-    <p>The Keyword Grouping Tool helps organize related keywords into thematic groups for better SEO strategies and content creation.</p>
-  </div>
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+                <h3 class="faq-question">Why is keyword grouping important?</h3>
+                <p class="faq-answer">
+                    Keyword grouping improves content relevance, increases search engine visibility, and helps in targeting multiple related keywords effectively in your content strategy.
+                </p>
+            </div>
 
-  <div class="faq-item">
-    <h3>How does the Keyword Grouping Tool work?</h3>
-    <p>The tool analyzes your provided keywords and clusters them based on their semantic similarity, helping you identify keyword themes quickly.</p>
-  </div>
-
-  <div class="faq-item">
-    <h3>Is the Keyword Grouping Tool free to use?</h3>
-    <p>Yes, the tool is completely free to use. There are no hidden charges or fees.</p>
-  </div>
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+                <h3 class="faq-question">How can I group keywords efficiently?</h3>
+                <p class="faq-answer">
+                    Use tools or software to analyze keyword data, identify common themes, and cluster keywords based on user intent, relevance, and search volume.
+                </p>
+            </div>
+        </div>
+    </section>
         <br>
         <br
             
