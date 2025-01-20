@@ -7,139 +7,259 @@
 
     <title>Keyword Density Tool</title>
     <style>
-    /* Global Styles */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f2f2f2;
-        color: #333;
-        line-height: 1.6;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
 
-    /* Header Styles */
-    .header {
-        background-color: #333;
-        color: white;
-        padding: 15px 20px;
-        text-align: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #007BFF;
+            color: white;
+        }
 
-    .header .logo {
-        font-size: 28px;
-        font-weight: bold;
-    }
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
 
-    .header nav {
-        margin-top: 10px;
-    }
+        .header nav {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
 
-    .header nav a {
-        color: white;
-        text-decoration: none;
-        padding: 10px 15px;
-        border-radius: 5px;
-        margin: 0 8px;
-        font-size: 16px;
-        transition: background-color 0.3s;
-    }
+        .header nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
 
-    .header nav a:hover {
-        background-color: #0056b3;
-    }
+        .header nav a:hover {
+            background-color: #0056b3;
+        }
 
-    /* Main Content Styles */
-    .main {
-        width: 90%;
-        max-width: 900px;
-        margin: 30px auto;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
+        .main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-    h1 {
-        font-size: 2rem;
-        margin-bottom: 20px;
-        color: #333;
-        text-align: center;
-    }
+        .categories {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
 
-    .categories {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 15px;
-        margin-bottom: 20px;
-    }
+        .categories button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-    .categories button {
-        background-color: #007BFF;
-        color: white;
-        padding: 12px 20px;
-        font-size: 1.1rem;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
+        .categories button:hover {
+            background-color: #0056b3;
+        }
 
-    .categories button:hover {
-        background-color: #0056b3;
-    }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-    .content {
-        background-color: #f9f9f9;
-        padding: 20px;
-        border-radius: 8px;
-        margin-top: 20px;
-    }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: #333;
+        }
 
-    .content textarea {
-        width: 100%;
-        height: 160px;
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            resize: none;
+        }
+
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px 0;
+            font-size: 1rem;
+            cursor: pointer;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .output {
+            margin-top: 20px;
+        }
+
+        .output h2 {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 10px;
+            border-collapse: collapse;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f8f8f8;
+            font-weight: bold;
+        }
+
+        .footer {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .footer .left {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .footer .right {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer .right a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer .right a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .header nav {
+                justify-content: center;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            table th, table td {
+                font-size: 0.9rem;
+                padding: 6px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .categories {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            textarea {
+                height: 120px;
+            }
+
+            .footer {
+                flex-direction: column;
+            }
+
+            .footer .right {
+                flex-direction: column;
+            }
+        }
+        /* Style for the FAQ section */
+.faq {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.faq h3 {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.faq p {
+    font-size: 1em;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Hover effect for FAQ */
+.faq:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+    .faq {
         padding: 12px;
-        border-radius: 8px;
-        border: 1px solid #ddd;
-        font-size: 1rem;
-        resize: none;
-        margin-bottom: 20px;
     }
 
-    .content button {
-        padding: 12px 25px;
-        font-size: 1.1rem;
-        background-color: #28a745;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        margin-top: 15px;
-        transition: background-color 0.3s;
+    .faq h3 {
+        font-size: 1.1em;
     }
 
-    .content button:hover {
-        background-color: #218838;
+    .faq p {
+        font-size: 0.95em;
     }
-
-    .output {
-        margin-top: 25px;
-    }
-
-    .output h2 {
-        font-size: 1.6rem;
-        color: #333;
-        margin-bottom: 15px;
-    }
-
-    table {
-        width: 100%;
-        margin-top: 20px
+}
 
     </style>
     <script type="application/ld+json">
@@ -232,7 +352,8 @@
             <div class="output" id="output"></div>
         </div>
     </main>
-    <h2>How to Use the Keyword Density Tool</h2>
+    <article>
+        <h2>How to Use the Keyword Density Tool</h2>
 
         <p>Welcome to the Keyword Density Tool, designed to help you analyze your content for keyword usage and ensure it is optimized for SEO. Here’s how to use the tool effectively:</p>
 
@@ -261,6 +382,7 @@
         <p>Keyword density is an important factor for SEO because it helps search engines understand the relevance of your content to specific search queries. By maintaining an appropriate keyword density, you ensure your content is optimized without overstuffing, which can negatively affect readability and search rankings.</p>
 
         <p>Using this tool, you can efficiently check and optimize the keyword density of your content to improve its SEO performance.</p>
+    </article>
 
      <div class="faq">
     <h3>1. What is Keyword Density?</h3>
