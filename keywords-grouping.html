@@ -157,6 +157,58 @@
             .footer .right {
                 flex-direction: column;
             }
+            #faq {
+    margin-top: 20px;
+}
+            /* FAQ item styles */
+.faq-item {
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-item:hover {
+    background-color: #f1f1f1;
+}
+
+.faq-item h3 {
+    font-size: 20px;
+    margin: 0;
+    color: #333;
+    cursor: pointer;
+}
+
+.faq-item p {
+    font-size: 16px;
+    color: #555;
+    margin-top: 8px;
+}
+            @media (max-width: 768px) {
+                 main {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .faq-item h3 {
+        font-size: 18px;
+    }
+
+    .faq-item p {
+        font-size: 14px;
+    }
+}
+
             
      
    </style>
@@ -190,7 +242,56 @@
     "target": "https://keywordsfromurls.com/Keyword-Grouping-Tool.html"
   }
 }
-</script>
+    </script>
+     <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is your website about?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our website provides tools and resources for keyword extraction, slug generation, and other SEO-related tasks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I use your tools?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can visit the respective tool pages, input your data, and follow the simple instructions provided."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer free tools?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, most of our tools are free to use, and we continuously update them for better performance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I contact you for support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, you can contact us via the Contact Us page for any queries or suggestions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you provide API access to your tools?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Currently, we do not provide API access, but it is on our roadmap for the future."
+          }
+        }
+      ]
+    }
+    </script>
+    
 
     
 </head>
@@ -242,8 +343,29 @@
         <p>
             This tool is designed to assist bloggers in grouping keywords effectively. Feel free to share suggestions!
         </p>
-        <br>
-        <br>
+       <section id="faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>1. What is your website about?</h3>
+                <p>Our website provides tools and resources for keyword extraction, slug generation, and other SEO-related tasks.</p>
+            </div>
+            <div class="faq-item">
+                <h3>2. How can I use your tools?</h3>
+                <p>You can visit the respective tool pages, input your data, and follow the simple instructions provided.</p>
+            </div>
+            <div class="faq-item">
+                <h3>3. Do you offer free tools?</h3>
+                <p>Yes, most of our tools are free to use, and we continuously update them for better performance.</p>
+            </div>
+            <div class="faq-item">
+                <h3>4. Can I contact you for support?</h3>
+                <p>Yes, you can contact us via the Contact Us page for any queries or suggestions.</p>
+            </div>
+            <div class="faq-item">
+                <h3>5. Do you provide API access to your tools?</h3>
+                <p>Currently, we do not provide API access, but it is on our roadmap for the future.</p>
+            </div>
+        </section>
               <!-- Footer -->
     <footer class="footer"><div class="left">&copy; 2024-25 Keywords From Urls | <a href="//www.dmca.com/Protection/Status.aspx?ID=6cf02a5f-5f1e-483c-88f4-70ff117b638f" title="DMCA.com Protection Status" class="dmca-badge"> 
 <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=6cf02a5f-5f1e-483c-88f4-70ff117b638f"  alt="DMCA.com Protection Status" /></a>
