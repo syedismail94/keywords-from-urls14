@@ -317,9 +317,91 @@
         color: #666;
         line-height: 1.6;
     }
+        /* Dropdown Menu Container */
+.dropdown-menu-container {
+  display: flex;
+  flex-direction: column; /* Ensure dropdowns are stacked vertically */
+  gap: 1rem; /* Add space between dropdowns */
+  align-items: flex-start; /* Align dropdowns to the left */
+}
+
+/* Dropdown Button */
+.dropdown-btn {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Ensure the button takes full width in responsive mode */
+  text-align: left;
+}
+
+.dropdown-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Dropdown Content */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  min-width: 200px;
+  z-index: 1;
+  margin-top: 5px;
+  right: 0; /* Align to the right */
+  max-width: calc(100vw - 10px); /* Ensure it stays within the screen */
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #f7f7f7;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .dropdown-menu-container {
+    gap: 1rem;
+    align-items: stretch; /* Buttons and dropdowns fill the width */
+  }
+
+  .dropdown-btn {
+    width: 100%; /* Full width buttons on small screens */
+  }
+
+  .dropdown-content {
+    position: static; /* Position relative to the button */
+    margin-top: 0;
+    width: 100%; /* Full width dropdown on small screens */
+    box-shadow: none; /* Optional: remove shadow for flat design */
+    border-radius: 0; /* Optional: remove rounded corners */
+  }
+}
+
     </style>
-    <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11525935043"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-11525935043'); </script>
+  <!-- 
+  <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11525935043"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-11525935043'); </script>
 <!-- Event snippet for Page view conversion page --> <script> gtag('event', 'conversion', {'send_to': 'AW-11525935043/y2SxCPHExoMaEMOf__cq'}); </script>
+    -->
+
 <script type="application">
     {
   "@context": "https://schema.org",
@@ -391,8 +473,11 @@
   ]
 }
 </script>
+<!-- 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2996839415438815"
      crossorigin="anonymous"></script>
+    -->
+
 
 </head>
 
@@ -406,6 +491,19 @@
             <a href="chrome-extension-for-keyword-extraction-from-urls.html">Chrome Extention</a>
               <a href="about-us.html" target="_blank">About Us</a>
             <a href="contact-us.html" target="_blank">Contact Us</a>
+                    <div class="dropdown-menu-container">
+                          <div class="dropdown">
+    <button class="dropdown-btn" onclick="toggleDropdown(event)">Tools and Blog</button>
+    <div class="dropdown-content">
+      <a href="Sitemap-url-extractor.html">Sitemap Url Extractor</a>
+         <a href="Keywords-url-Generator.html">Keywords Url Generator</a>
+         <a href="">URl Encoder/Decoder</a>
+        <a href=""> Url Parser</a>                           
+      <a href="">Blog</a>
+    </div>
+  </div>
+
+
             </nav>
     </header>
 
@@ -541,12 +639,7 @@
             }
         }
     </script>
-
-    <div style="text-align:center;">
-        <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvj6q0lJAdr2BReKKhoqXpTMX-4jSAq3bqfsU4HvSbi4TIIZpr_3iUdJkagOSjcTpdxtBAXq1WUXEdM22oR_hqtD3RD1e5zG6d1c7T12luHodLKTUN3EErB5MsO7FfNUDtdkCsJPXlOG-AURPtdrUtY8vVa8XgKwFzOQfna-6Wz8Z72Ob0_1TWu9RSEKlI/s1080/Keywords%20From%20Urls.png" style="display: block; padding: 1em 0;">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvj6q0lJAdr2BReKKhoqXpTMX-4jSAq3bqfsU4HvSbi4TIIZpr_3iUdJkagOSjcTpdxtBAXq1WUXEdM22oR_hqtD3RD1e5zG6d1c7T12luHodLKTUN3EErB5MsO7FfNUDtdkCsJPXlOG-AURPtdrUtY8vVa8XgKwFzOQfna-6Wz8Z72Ob0_1TWu9RSEKlI/s320/Keywords%20From%20Urls.png" alt="Keyword extraction tool" loading="lazy" width="320">
-        </a>
-        <h2>Extract Keywords from URLs to Organize Your Website Data</h2>
+<h2>Extract Keywords from URLs to Organize Your Website Data</h2>
         <p>When organizing your website data and analyzing the topics covered in your blog, it can be useful to extract keywords from your URLs. Our tool helps you do just that. Heres how it works:</p>
         <ul>
             <li>If you enter a URL like https://www.keywordsfromurls.com/, the tool extracts the keyword www.keywordsfromurls.com.</li>
@@ -591,6 +684,31 @@
         </div>
     </div>
 </section>
+            <script>
+function toggleDropdown(event) {
+  const dropdown = event.target.nextElementSibling;
+  const isVisible = dropdown.style.display === 'block';
+
+  // Close all other dropdowns
+  document.querySelectorAll('.dropdown-content').forEach((content) => {
+    content.style.display = 'none';
+  });
+
+  // Toggle the clicked dropdown
+  if (!isVisible) {
+    dropdown.style.display = 'block';
+  }
+}
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.dropdown')) {
+    document.querySelectorAll('.dropdown-content').forEach((content) => {
+      content.style.display = 'none';
+    });
+  }
+});
+            </script>
 
      <!-- Footer -->
     <footer class="footer"><div class="left">&copy; 2025 Keywords From Urls | <a href="//www.dmca.com/Protection/Status.aspx?ID=6cf02a5f-5f1e-483c-88f4-70ff117b638f" title="DMCA.com Protection Status" class="dmca-badge"> 
