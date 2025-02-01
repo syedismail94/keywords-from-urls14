@@ -458,7 +458,55 @@
   ]
 }
 </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does the keyword extraction tool work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When you enter a URL, the tool extracts the primary keyword from it. For example, from https://www.keywordsfromurls.com/, the extracted keyword would be www.keywordsfromurls.com."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What keyword is extracted from a URL with multiple segments?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For a URL like https://keywordsfromurls.com/keywordsfromurls/, the keyword extracted would be keywordsfromurls.com."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the tool handle blog URLs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If your blog is on Blogger and you provide a URL like https://xyz.blogspot.com/01/01/one-more-second-logic.html, the keyword extracted will be 'one more second logic'."
+          }
+        }
+      ]
+    }
+  </script>
 
+ <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Keyword Extraction Tool",
+      "url": "https://www.keywordsfromurls.com/",
+      "description": "A tool to extract keywords from URLs to help organize website data and analyze blog topics.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+  </script>
 </head>
       <!-- Header -->
     <header class="header">
@@ -660,7 +708,17 @@ document.addEventListener('click', (e) => {
   }
 });
             </script>
+ <h3>Frequently Asked Questions</h3>
+  <div>
+    <h2>How does the keyword extraction tool work?</h2>
+    <p>When you enter a URL, the tool extracts the primary keyword from it. For example, from <a href="https://www.keywordsfromurls.com/">https://www.keywordsfromurls.com/</a>, the extracted keyword would be <strong>www.keywordsfromurls.com</strong>.</p>
 
+    <h2>What kind of URLs can I use with the tool?</h2>
+    <p>You can use any URL, including personal blogs, websites, and e-commerce links. For example, <a href="https://xyz.blogspot.com/01/01/one-more-second-logic.html">https://xyz.blogspot.com/01/01/one-more-second-logic.html</a> will extract <strong>one more second logic</strong>.</p>
+
+    <h2>Does the tool work with subdomains?</h2>
+    <p>Yes, the tool works with subdomains. It will identify and extract keywords from both the main domain and subdomain URLs effectively.</p>
+  </div>
      <!-- Footer -->
     <footer class="footer"><div class="left">&copy; 2025 Keywords From Urls | <a href="//www.dmca.com/Protection/Status.aspx?ID=6cf02a5f-5f1e-483c-88f4-70ff117b638f" title="DMCA.com Protection Status" class="dmca-badge"> 
 <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=6cf02a5f-5f1e-483c-88f4-70ff117b638f"  alt="DMCA.com Protection Status" /></a>
