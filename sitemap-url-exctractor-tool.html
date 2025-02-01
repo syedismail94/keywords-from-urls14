@@ -387,7 +387,79 @@
     <!-- 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2996839415438815"
      crossorigin="anonymous"></script>-->
-  </head>
+  <script type="application">
+    {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Keyword Extractor Tool",
+  "url": "https://keywordsfromurls.com/",
+  "description": "Extract relevant keywords from URLs or text with our Keyword Extractor tool. Get keywords instantly and use them for your SEO or content creation needs.",
+  "mainEntityOfPage": "https://keywordsfromurls.com/",
+  "potentialAction": {
+    "@type": "Action",
+    "name": "Extract Keywords",
+    "target": "https://keywordsfromurls.com/",
+    "actionStatus": "ActiveActionStatus"
+  },
+  "image": "",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Keywords from urls",
+    "url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvj6q0lJAdr2BReKKhoqXpTMX-4jSAq3bqfsU4HvSbi4TIIZpr_3iUdJkagOSjcTpdxtBAXq1WUXEdM22oR_hqtD3RD1e5zG6d1c7T12luHodLKTUN3EErB5MsO7FfNUDtdkCsJPXlOG-AURPtdrUtY8vVa8XgKwFzOQfna-6Wz8Z72Ob0_1TWu9RSEKlI/s1080/Keywords%20From%20Urls.png"
+  }
+}
+
+</script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the purpose of the Keywords from URLs tool?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Keywords from URLs tool extracts meaningful keywords from a segment of a URL. It helps you identify relevant keywords for SEO, content creation, or competitive analysis, making it easier to enhance your website's visibility on search engines."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the Keyword Extractor tool work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Keyword Extractor tool works by analyzing a URL and extracting the last meaningful segment of the URL path. It ignores file extensions (e.g., `.html`) and domain names (e.g., `.com`), providing you with precise keywords that you can use to improve your content and SEO strategy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use the Keywords from URLs tool for any URL?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, you can use the Keywords from URLs tool for any valid URL. The tool is designed to handle various types of URLs, including product pages, blog posts, and category pages, making it a versatile tool for extracting keywords from different types of online content."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it necessary to log in to use the Keyword Extractor tool?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, you don’t need to log in to use the Keyword Extractor tool. Simply paste the URL into the input field, and the tool will instantly generate the keywords for you without requiring an account or login."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can the Keyword Grouping and Keyword Density tools benefit my SEO strategy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Keyword Grouping tool helps you organize keywords into related groups, improving content relevance and targeting. The Keyword Density tool helps you calculate how often certain keywords appear in your content, ensuring optimal keyword usage for better SEO performance. Both tools work together to refine and optimize your content strategy."
+      }
+    }
+  ]
+}
+</script>
+
+</head>
       <!-- Header -->
     <header class="header">
         <div class="logo">Keywords From Urls</div>
@@ -411,6 +483,148 @@
 
             </nav>
     </header>
+    <!-- Main Content -->
+    <main class="main">
+        <div class="categories">
+    <a href="keywords-grouping.html" target="_blank">
+        <button>Keyword Grouping</button>
+    </a>
+    <a href="Slug-Generator.html" target="_blank">
+        <button>Slug Generator</button>
+    </a>
+    <a href="Keyword-Density-And-Wordcount-Tool.html" target="_blank">
+        <button>Keyword Density</button>
+    </a>
+</div>
+
+        <div class="container">
+            <h1>sitemap url extractor online tool</h1>
+        <textarea id="urlInput" placeholder="Paste up to 500 URLs here"></textarea>
+        <div class="button-container">
+            <button id="copyButton">Copy URLs</button>
+            <button id="getKeywordsButton">Get Keywords</button>
+        </div>
+        <div class="keyword-list" id="keywordList"></div>
+    </div>
+
+    <script>
+        document.getElementById('urlInput').addEventListener('paste', function (event) {
+            event.preventDefault();
+            const clipboardData = event.clipboardData || window.clipboardData;
+            const pastedData = clipboardData.getData('Text');
+
+            const urlPattern = /(https?:\/\/[^\s]+)/gi;
+            const urls = pastedData.match(urlPattern);
+
+            if (urls) {
+                const currentUrls = event.target.value.match(urlPattern) || [];
+                if (currentUrls.length + urls.length > 500) {
+                    alert('Only 500 URLs are allowed.');
+                    return;
+                }
+                event.target.value += urls.join('\n') + '\n';
+            }
+        });
+
+        document.getElementById('copyButton').addEventListener('click', function () {
+            const textarea = document.getElementById('urlInput');
+            const urlPattern = /(https?:\/\/[^\s]+)/gi;
+            const validUrls = textarea.value.match(urlPattern);
+
+            if (validUrls) {
+                const tempTextarea = document.createElement('textarea');
+                tempTextarea.value = validUrls.join('\n');
+                document.body.appendChild(tempTextarea);
+                tempTextarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempTextarea);
+                this.innerHTML = 'Copied';
+                setTimeout(() => {
+                    this.innerHTML = 'Copy Urls';
+                }, 4000);
+            } else {
+                alert('No valid URLs to copy!');
+            }
+        });
+
+        document.getElementById('getKeywordsButton').addEventListener('click', function () {
+            const textarea = document.getElementById('urlInput');
+            const urlPattern = /(https?:\/\/[^\s]+)/gi;
+            const urls = textarea.value.match(urlPattern);
+            const keywordListDiv = document.getElementById('keywordList');
+
+            keywordListDiv.innerHTML = ''; // Clear previous keyword list
+
+            if (urls && urls.length > 0) {
+                const limitedUrls = urls.slice(0, 500);
+                const keywords = limitedUrls.map(url => extractKeywordFromUrl(url));
+
+                this.innerHTML = 'Go Below';
+                setTimeout(() => {
+                    this.innerHTML = 'Copy Keywords';
+                }, 4000);
+
+                keywordListDiv.innerHTML = '<strong>Keywords List</strong><ul>' +
+                    keywords.map(keyword => `<li>${keyword}</li>`).join('') +
+                    '</ul>';
+
+                const copyKeywordsButton = document.createElement('button');
+                copyKeywordsButton.id = 'copyKeywordsButton';
+                copyKeywordsButton.className = 'copy-keywords-button';
+                copyKeywordsButton.textContent = 'Copy Keywords';
+                keywordListDiv.appendChild(copyKeywordsButton);
+
+                copyKeywordsButton.addEventListener('click', function () {
+                    const keywordItems = keywordListDiv.querySelectorAll('li');
+                    const keywords = Array.from(keywordItems).map(item => item.textContent);
+
+                    if (keywords.length > 0) {
+                        const tempTextarea = document.createElement('textarea');
+                        tempTextarea.value = keywords.join('\n');
+                        document.body.appendChild(tempTextarea);
+                        tempTextarea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(tempTextarea);
+                        this.innerHTML = 'Copied';
+                        setTimeout(() => {
+                            this.innerHTML = 'Copy Keywords';
+                        }, 4000);
+                    } else {
+                        alert('No keywords to copy!');
+                    }
+                });
+            } else {
+                alert('No URLs provided or limit exceeded!');
+            }
+        });
+
+        function extractKeywordFromUrl(url) {
+            try {
+                const urlObj = new URL(url);
+                const pathname = urlObj.pathname;
+                const segments = pathname.split('/').filter(part => part && !part.startsWith('.'));
+
+                if (segments.length > 0) {
+                    const lastSegment = segments[segments.length - 1];
+                    return lastSegment.replace(/[-]/g, ' ').replace(/\.[^/.]+$/, '');
+                } else {
+                    return urlObj.hostname;
+                }
+            } catch (error) {
+                return '(Invalid URL)';
+            }
+        }
+    </script>
+<h2>Extract Keywords from URLs to Organize Your Website Data</h2>
+        <p>When organizing your website data and analyzing the topics covered in your blog, it can be useful to extract keywords from your URLs. Our tool helps you do just that. Heres how it works:</p>
+        <ul>
+            <li>If you enter a URL like https://www.keywordsfromurls.com/, the tool extracts the keyword www.keywordsfromurls.com.</li>
+            <li>For a URL such as https://keywordsfromurls.com/keywordsfromurls/, the keyword extracted would be keywordsfromurls.com</li>
+            <li>If your blog is on Blogger and you provide a URL like https://xyz.blogspot.com/01/01/one-more-second-logic.html, the keyword extracted will be one more second logic.</li>
+        </ul>
+        <p>Discover other tools: <a href="keywords-grouping.html">Keyword Grouping Tool</a>, <a href="Slug-Generator.html">Slug Generator</a>, and <a href="Keyword-Density-And-Wordcount-Tool.html">Keyword Density Tool</a>.</p>
+
+    </div>
 
         <div class="share-container">
             <p>Share this tool:</p>
