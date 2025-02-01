@@ -492,5 +492,31 @@
             }).catch(console.error);
         }
     </script>
+     <script>
+function toggleDropdown(event) {
+  const dropdown = event.target.nextElementSibling;
+  const isVisible = dropdown.style.display === 'block';
+
+  // Close all other dropdowns
+  document.querySelectorAll('.dropdown-content').forEach((content) => {
+    content.style.display = 'none';
+  });
+
+  // Toggle the clicked dropdown
+  if (!isVisible) {
+    dropdown.style.display = 'block';
+  }
+}
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.dropdown')) {
+    document.querySelectorAll('.dropdown-content').forEach((content) => {
+      content.style.display = 'none';
+    });
+  }
+});
+            </script>
+
 </body>
 </html>
