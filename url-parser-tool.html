@@ -380,6 +380,78 @@
                 width: 100%;
             }
         }
+      /* Tool Section Container */
+        .tool-center-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .tool-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .tool-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .tool-result {
+            padding: 15px;
+            background-color: #e9f7ef;
+            border: 1px solid #b2dfdb;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .copy-btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 600px) {
+            .tool-box {
+                padding: 15px;
+            }
+
+            .copy-btn {
+                width: 100%;
+                font-size: 18px;
+            }
+        }
+    .url-tool-copy-button {
+    background-color: #28a745;
+    font-size: 14px;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: block;  /* Makes it a block element */
+    margin: 10px auto;  /* Centers it below the output box */
+}
+
     </style>
   <!-- 
   <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11525935043"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-11525935043'); </script>
@@ -411,6 +483,12 @@
 
             </nav>
     </header>
+<div class="url-parser-tool-container">
+        <h2>URL Parser Tool</h2>
+        <input type="text" id="urlInput" class="url-parser-input" placeholder="Enter a URL...">
+        <button onclick="parseURL()" class="url-parser-button">Parse URL</button>
+        <div id="urlResults" class="url-parser-results">Results will appear here...</div>
+    </div>
 
         <div class="share-container">
             <p>Share this tool:</p>
@@ -446,7 +524,29 @@ document.addEventListener('click', (e) => {
   }
 });
             </script>
-
+    <script>
+        function parseURL() {
+            let url = document.getElementById("urlInput").value;
+            try {
+                let urlObj = new URL(url);
+                let results = `
+                    <p><strong>Scheme:</strong> ${urlObj.protocol.replace(':', '')}</p>
+                    <p><strong>Authority:</strong> ${urlObj.host}</p>
+                    <p><strong>Host:</strong> ${urlObj.hostname}</p>
+                    <p><strong>Subdomain:</strong> ${urlObj.hostname.split('.').length > 2 ? urlObj.hostname.split('.')[0] : 'None'}</p>
+                    <p><strong>Domain:</strong> ${urlObj.hostname.split('.').slice(-2).join('.')}</p>
+                    <p><strong>TLD:</strong> ${urlObj.hostname.split('.').pop()}</p>
+                    <p><strong>Path:</strong> ${urlObj.pathname}</p>
+                    <p><strong>Query String:</strong> ${urlObj.search}</p>
+                    <p><strong>File Name:</strong> ${urlObj.pathname.split('/').pop()}</p>
+                    <p><strong>File Extension:</strong> ${urlObj.pathname.split('.').pop()}</p>
+                `;
+                document.getElementById("urlResults").innerHTML = results;
+            } catch (e) {
+                document.getElementById("urlResults").innerHTML = "<p class='url-parser-error'>Invalid URL</p>";
+            }
+        }
+    </script>
      <!-- Footer -->
     <footer class="footer"><div class="left">&copy; 2025 Keywords From Urls | <a href="//www.dmca.com/Protection/Status.aspx?ID=6cf02a5f-5f1e-483c-88f4-70ff117b638f" title="DMCA.com Protection Status" class="dmca-badge"> 
 <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=6cf02a5f-5f1e-483c-88f4-70ff117b638f"  alt="DMCA.com Protection Status" /></a>
