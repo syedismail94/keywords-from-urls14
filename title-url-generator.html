@@ -380,6 +380,103 @@
                 width: 100%;
             }
         }
+     h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input, button, .checkbox-container {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        input[type="text"] {
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        button {
+            font-size: 1rem;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .checkbox-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .output-area {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            word-wrap: break-word;
+        }
+
+        .copy-button {
+            background-color: #28a745;
+        }
+
+        .copy-button.copied {
+            background-color: #218838;
+            color: white;
+        }
+
+        .copy-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .categories button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .categories button:hover {
+            background-color: #0056b3;
+        }
     </style>
   <!-- 
   <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11525935043"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-11525935043'); </script>
@@ -411,6 +508,97 @@
 
             </nav>
     </header>
+    <!-- Main Content -->
+    <main class="main">
+        <div class="categories">
+            <a href="https://keywordsfromurls.com/">
+                <button>Keyword Extractor </button>
+            </a>
+            <a href="keywords-grouping.html">
+                <button>Keywords Grouping</button>
+            </a>
+            <a href="https://keywordsfromurls.com/Keyword-Density-And-Wordcount-Tool.html">
+                <button>Keyword Density</button>
+            </a>
+        </div>
+    
+        <div class="container">
+            <h1>Title Generator Url Generator Tool</h1>
+            <label for="inputText">Enter Text:</label>
+            <input type="text" id="inputText" placeholder="Enter your text here">
+
+            <div>
+                <button onclick="setSeparator('-')">Hyphen (-)</button>
+                <button onclick="setSeparator('_')">Underscore (_)</button>
+            </div>
+
+            <div class="checkbox-container">
+                <div>
+                    <label for="removeDot">Remove Dot (.):</label>
+                    <input type="checkbox" id="removeDot">
+                </div>
+
+                <div>
+                    <label for="removeNumbers">Remove Numbers:</label>
+                    <input type="checkbox" id="removeNumbers">
+                </div>
+            </div>
+
+            <button onclick="generateSlug()">Generate Slug</button>
+            <div class="output-area" id="outputArea"></div>
+            <button id="copyButton" class="copy-button" style="display:none;" onclick="copySlug()">Copy</button>
+        </div>
+    </main>
+    <br>
+
+    <script>
+        let separator = '';
+
+        function setSeparator(value) {
+            separator = value;
+        }
+
+        function generateSlug() {
+            const inputText = document.getElementById('inputText').value;
+            const removeDot = document.getElementById('removeDot').checked;
+            const removeNumbers = document.getElementById('removeNumbers').checked;
+
+            if (!inputText.trim()) return;
+
+            let slug = inputText.trim().toLowerCase();
+
+            if (removeDot) slug = slug.replace(/\./g, '');
+            if (removeNumbers) slug = slug.replace(/\d+/g, '');
+
+            slug = slug.replace(/\s+/g, separator);
+            if (slug === separator) slug = '';
+
+            const outputArea = document.getElementById('outputArea');
+            outputArea.textContent = slug;
+            document.getElementById('copyButton').style.display = 'inline-block';
+        }
+
+        function copySlug() {
+            const outputArea = document.getElementById('outputArea');
+            const text = outputArea.textContent;
+
+            if (!text) return;
+
+            navigator.clipboard.writeText(text).then(() => {
+                const copyButton = document.getElementById('copyButton');
+                copyButton.textContent = 'Copied!';
+                copyButton.classList.add('copied');
+
+                setTimeout(() => {
+                    copyButton.textContent = 'Copy';
+                    copyButton.classList.remove('copied');
+                }, 4000);
+            }).catch(console.error);
+        }
+    </script>
+    </script>
+<div class="parent-container">
+  <div class="share-container">            
 
         <div class="share-container">
             <p>Share this tool:</p>
