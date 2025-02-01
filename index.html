@@ -317,90 +317,74 @@
         color: #666;
         line-height: 1.6;
     }
-        /* Dropdown Menu Container */
-.dropdown-menu-container {
-  display: flex;
-  flex-direction: column; /* Ensure dropdowns are stacked vertically */
-  gap: 1rem; /* Add space between dropdowns */
-  align-items: flex-start; /* Align dropdowns to the left */
-}
+        /* Dropdown container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
 
-/* Dropdown Button */
-.dropdown-btn {
-  background-color: #007BFF;
-  color: white;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  width: 100%; /* Ensure the button takes full width in responsive mode */
-  text-align: left;
-}
+        /* Dropdown button */
+        .dropdown-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 18px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 250px;
+            text-align: left;
+            
+        }
 
-.dropdown-btn:hover {
-  background-color: #0056b3;
-}
+        .dropdown-btn:hover {
+            background-color: #0056b3;
+        }
 
-/* Dropdown Content */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: white;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  min-width: 200px;
-  z-index: 1;
-  margin-top: 5px;
-  right: 0; /* Align to the right */
-  max-width: calc(100vw - 10px); /* Ensure it stays within the screen */
-  overflow-wrap: break-word;
-  white-space: normal;
-}
+        /* Dropdown content */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background-color:#0056b3;
+            min-width: 100%;
+            max-width: 250px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            z-index: 1000;
+        }
 
-.dropdown-content a {
-  display: block;
-  padding: 10px 15px;
-  color: #333;
-  text-decoration: none;
-  border-bottom: 1px solid #f0f0f0;
-  transition: background-color 0.2s ease;
-}
+        .dropdown-content a {
+            display: block;
+            padding: 12px;
+            text-decoration: none;
+            color: black;
+            font-size: 14px;
+            transition: background 0.3s;
+            border-bottom: 1px solid #ddd;
+        }
 
-.dropdown-content a:last-child {
-  border-bottom: none;
-}
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
 
-.dropdown-content a:hover {
-  background-color: #f7f7f7;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .dropdown-menu-container {
-    gap: 1rem;
-    align-items: stretch; /* Buttons and dropdowns fill the width */
-  }
-
-  .dropdown-btn {
-    width: 100%; /* Full width buttons on small screens */
-  }
-
-  .dropdown-content {
-    position: static; /* Position relative to the button */
-    margin-top: 0;
-    width: 100%; /* Full width dropdown on small screens */
-    box-shadow: none; /* Optional: remove shadow for flat design */
-    border-radius: 0; /* Optional: remove rounded corners */
-  }
-}
-
+        /* Ensure responsiveness */
+        @media (max-width: 768px) {
+            .dropdown-btn {
+                width: 100%;
+            }
+            .dropdown-content {
+                width: 100%;
+            }
+        }
     </style>
   <!-- 
   <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11525935043"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-11525935043'); </script>
-<!-- Event snippet for Page view conversion page --> <script> gtag('event', 'conversion', {'send_to': 'AW-11525935043/y2SxCPHExoMaEMOf__cq'}); </script>
-    -->
+<!-- Event snippet for Page view conversion page --> <script> gtag('event', 'conversion', {'send_to': 'AW-11525935043/y2SxCPHExoMaEMOf__cq'}); </script> -->
+   
 
 <script type="application">
     {
@@ -475,8 +459,8 @@
 </script>
 <!-- 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2996839415438815"
-     crossorigin="anonymous"></script>
-    -->
+     crossorigin="anonymous"></script>-->
+    
 
 
 </head>
