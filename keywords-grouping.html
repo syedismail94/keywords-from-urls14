@@ -202,7 +202,69 @@
         font-size: 14px;
     }
 }
+/* Dropdown container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
 
+        /* Dropdown button */
+        .dropdown-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 18px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 250px;
+            text-align: left;
+            
+        }
+
+        .dropdown-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Dropdown content */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background-color:#0056b3;
+            min-width: 100%;
+            max-width: 250px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 12px;
+            text-decoration: none;
+            color: black;
+            font-size: 14px;
+            transition: background 0.3s;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Ensure responsiveness */
+        @media (max-width: 768px) {
+            .dropdown-btn {
+                width: 100%;
+            }
+            .dropdown-content {
+                width: 100%;
+            }
+        }
             
      
    </style>
@@ -291,24 +353,27 @@
     
 </head>
 <body>
-    <!-- Header -->
+   <!-- Header -->
     <header class="header">
         <div class="logo">Keywords From Urls</div>
         <nav>
             <a href="https://keywordsfromurls.com/">Home</a>
-            
-            </nav>
+            <a href="chrome-extension-for-keyword-extraction-from-urls.html">Chrome Extention</a>
+              <a href="about-us.html" target="_blank">About Us</a>
+            <a href="contact-us.html" target="_blank">Contact Us</a>
+                   <div class="dropdown-menu-container">
+  <div class="dropdown">
+    <button class="dropdown-btn" onclick="toggleDropdown(event)">Url Tools</button>
+    <div class="dropdown-content" style="display: none;">
+      <a href="sitemap-url-extractor-tool.html">Sitemap URL Extractor</a>
+      <a href="title-url-generator.html">Title URL Generator</a>
+      <a href="url-encoder-decoder.html">URL Encoder/Decoder</a>
+      <a href="url-parser-tool.html">URL Parser</a>                           
+    </div>
+  </div>
+</div>
+ </nav>
     </header>
-     <!-- Main Content -->
-    <main class="main">
-        <div class="categories">
-            <a href="https://keywordsfromurls.com/">
-                <button>Keywords Extractor</button></a>
-            <a href="https://keywordsfromurls.com/Slug-Generator.html">
-            <button>Slug Generator</button></a>
-           <a href="https://keywordsfromurls.com/Keyword-Density-And-Wordcount-Tool.html">
-            <button>Keyword Density</button></a>
-        </div>
     <div class="container text-center">
         <h1 class="my-4">Keyword Grouping Tool</h1>
         <div class="form-floating mb-4">
