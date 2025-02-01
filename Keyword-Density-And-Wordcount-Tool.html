@@ -331,27 +331,41 @@
      crossorigin="anonymous"></script>
 </head>
 <body>
+    <!-- Header -->
     <header class="header">
         <div class="logo">Keywords From Urls</div>
         <nav>
             <a href="https://keywordsfromurls.com/">Home</a>
-        </nav>
+            <a href="chrome-extension-for-keyword-extraction-from-urls.html">Chrome Extention</a>
+              <a href="about-us.html" target="_blank">About Us</a>
+            <a href="contact-us.html" target="_blank">Contact Us</a>
+                   <div class="dropdown-menu-container">
+  <div class="dropdown">
+    <button class="dropdown-btn" onclick="toggleDropdown(event)">Url Tools</button>
+    <div class="dropdown-content" style="display: none;">
+      <a href="sitemap-url-extractor-tool.html">Sitemap URL Extractor</a>
+      <a href="title-url-generator.html">Title URL Generator</a>
+      <a href="url-encoder-decoder.html">URL Encoder/Decoder</a>
+      <a href="url-parser-tool.html">URL Parser</a>                           
+    </div>
+  </div>
+</div>
+ </nav>
     </header>
 
+    <!-- Main Content -->
     <main class="main">
         <div class="categories">
-            <a href="keywords-grouping.html"><button>Keyword Grouping</button></a>
-            <a href="Slug-Generator.html"><button>Slug Generator</button></a>
-            <a href="https://keywordsfromurls.com/"><button>Keyword Extractor from URLs</button></a>
-        </div>
-
-        <div class="container">
-            <h1>Keyword Density Tool</h1>
-            <textarea id="textInput" placeholder="Paste your text here..."></textarea>
-            <button onclick="countWords()">Count Words</button>
-            <button onclick="calculateKeywordDensity()">Keyword Density</button>
-            <div class="output" id="output"></div>
-        </div>
+    <a href="keywords-grouping.html" target="_blank">
+        <button>Keyword Grouping</button>
+    </a>
+    <a href="Slug-Generator.html" target="_blank">
+        <button>Slug Generator</button>
+    </a>
+    <a href="Keyword-Density-And-Wordcount-Tool.html" target="_blank">
+        <button>Keyword Density</button>
+    </a>
+</div>
     </main>
      <div class="faq">
     <h3>1. What is Keyword Density?</h3>
