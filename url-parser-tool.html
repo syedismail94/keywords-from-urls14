@@ -442,17 +442,50 @@
                 font-size: 18px;
             }
         }
-    .url-tool-copy-button {
-    background-color: #28a745;
-    font-size: 14px;
-    padding: 8px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-    display: block;  /* Makes it a block element */
-    margin: 10px auto;  /* Centers it below the output box */
-}
+ /* Centering the Tool Section */
+        .tool-center-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Full viewport height */
+            flex-direction: column;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
 
-    </style>
+        /* Result Box */
+        .result-box {
+            padding: 15px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        /* Copy Button */
+        .copy-btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 600px) {
+            .copy-btn {
+                padding: 15px 25px; /* Bigger button for mobile */
+                font-size: 18px;
+            }
+        }   
+</style>
   <!-- 
   <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11525935043"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-11525935043'); </script>
 <!-- Event snippet for Page view conversion page --> <script> gtag('event', 'conversion', {'send_to': 'AW-11525935043/y2SxCPHExoMaEMOf__cq'}); </script> -->
@@ -483,10 +516,10 @@
 
             </nav>
     </header>
-<div class="url-parser-tool-container">
+<div class="tool-center-container ">
         <h2>URL Parser Tool</h2>
-        <input type="text" id="urlInput" class="url-parser-input" placeholder="Enter a URL...">
-        <button onclick="parseURL()" class="url-parser-button">Parse URL</button>
+        <input type="text" id="urlInput" class="url-parser-input" placeholder="Enter a URL..."><br>
+        <button onclick="parseURL()" class="url-parser-button">Parse URL</button><br>
         <div id="urlResults" class="url-parser-results">Results will appear here...</div>
     </div>
 
