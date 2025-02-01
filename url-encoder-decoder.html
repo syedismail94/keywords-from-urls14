@@ -380,6 +380,76 @@
                 width: 100%;
             }
         }
+     .url-tool-container {
+            max-width: 500px;
+            margin: auto;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: none;
+            font-size: 16px;
+        }
+
+        .url-tool-button-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .url-tool-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .url-tool-button:hover {
+            background-color: #0056b3;
+        }
+
+        .url-tool-output-box {
+            margin-top: 15px;
+            padding: 10px;
+            background: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            min-height: 40px;
+            word-wrap: break-word;
+            font-size: 16px;
+            position: relative;
+        }
+
+      .url-tool-copy-button {
+    background-color: #28a745;
+    font-size: 14px;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: block;  /* Makes it a block element */
+    margin: 10px auto;  /* Centers it below the output box */
+}
+
+        .url-tool-copy-button:hover {
+            background-color: #218838;
+        }
+
     </style>
   <!-- 
   <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11525935043"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-11525935043'); </script>
@@ -411,6 +481,63 @@
 
             </nav>
     </header>
+ <!-- Main Content -->
+    <main class="main">
+        <div class="categories">
+            <a href="https://keywordsfromurls.com" target="_blank">
+        <button>Keyword Exctractor</button>
+    </a>
+    <a href="keywords-grouping.html" target="_blank">
+        <button>Keyword Grouping</button>
+    </a>
+    <a href="Slug-Generator.html" target="_blank">
+        <button>Slug Generator</button>
+    </a>
+    <a href="Keyword-Density-And-Wordcount-Tool.html" target="_blank">
+        <button>Keyword Density</button>
+    </a>
+</div>
+           <div class="url-tool-container">
+        <h1>URL Encoder & Decoder</h1>
+        <textarea id="inputText" rows="5" placeholder="Enter your text here..."></textarea>
+        <div class="url-tool-button-group">
+            <button class="url-tool-button" onclick="encodeText()">Encode</button>
+            <button class="url-tool-button" onclick="decodeText()">Decode</button>
+        </div>
+       <div class="url-tool-output-box">
+    <span id="outputText">Result will appear here...</span>
+</div>
+<button class="url-tool-copy-button" onclick="copyToClipboard()">Copy</button>
+
+    </div>
+    <script>
+        function encodeText() {
+            const input = document.getElementById('inputText').value;
+            const encoded = encodeURIComponent(input);
+            document.getElementById('outputText').textContent = encoded;
+        }
+
+        function decodeText() {
+            const input = document.getElementById('inputText').value;
+            try {
+                const decoded = decodeURIComponent(input);
+                document.getElementById('outputText').textContent = decoded;
+            } catch (error) {
+                document.getElementById('outputText').textContent = 'Invalid encoded text';
+            }
+        }
+
+        function copyToClipboard() {
+            const outputText = document.getElementById('outputText').textContent;
+            navigator.clipboard.writeText(outputText).then(() => {
+                const copyBtn = document.querySelector('.url-tool-copy-button');
+                copyBtn.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyBtn.textContent = 'Copy';
+                }, 4000);
+            });
+        }
+    </script>
 
         <div class="share-container">
             <p>Share this tool:</p>
