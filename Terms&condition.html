@@ -40,38 +40,7 @@
         a:hover {
             text-decoration: underline;
         }
-        /* Header */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-            background-color: #007BFF;
-            color: white;
-        }
-
-        .header .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .header nav {
-            display: flex;
-            gap: 15px;
-        }
-
-        .header nav a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .header nav a:hover {
-            background-color: #0056b3;
-        }
-
+     
         /* Footer */
         .footer {
             background-color: #007BFF;
@@ -118,17 +87,329 @@
                 flex-direction: column;
             }
         }
+          /* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #007BFF;
+    color: white;
+}
+
+.header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header nav {
+    display: flex;
+    gap: 15px;
+}
+
+.header nav a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.header nav a:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header nav {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .header nav a {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .header .logo {
+        font-size: 20px;
+    }
+
+    .header nav a {
+        font-size: 14px;
+        padding: 10px 5px;
+    }
+}
+
+
+        /* Main Content */
+        .main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 20px;
+        }
+
+        .categories button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .categories button:hover {
+            background-color: #0056b3;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            width: 100%;
+            height: 250px;
+            padding: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+            resize: none;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            textarea {
+                height: 150px;
+                font-size: 14px;
+            }
+
+            button {
+                font-size: 12px;
+                padding: 5px 10px;
+            }
+        }
+
+        .keyword-list {
+            text-align: center;
+            margin-top: 20px;
+            padding: 13px;
+            border: 2px solid #ddd;
+            background-color: #f9f9f9;
+            position: relative;
+        }
+
+        .copy-keywords-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            font-size: 12px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .copy-keywords-button:hover {
+            background-color: #0056b3;
+        }
+  /* Dropdown container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown button */
+        .dropdown-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 18px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 250px;
+            text-align: left;
+            
+        }
+
+        .dropdown-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Dropdown content */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background-color:#0056b3;
+            min-width: 100%;
+            max-width: 250px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 12px;
+            text-decoration: none;
+            color: black;
+            font-size: 14px;
+            transition: background 0.3s;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Ensure responsiveness */
+        @media (max-width: 768px) {
+            .dropdown-btn {
+                width: 100%;
+            }
+            .dropdown-content {
+                width: 100%;
+            }
+        }
+         button {
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            textarea {
+                height: 150px;
+                font-size: 14px;
+            }
+
+            button {
+                font-size: 12px;
+                padding: 5px 10px;
+            }
+        }
+
+        .keyword-list {
+            text-align: center;
+            margin-top: 20px;
+            padding: 13px;
+            border: 2px solid #ddd;
+            background-color: #f9f9f9;
+            position: relative;
+        }
+
+        .copy-keywords-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            font-size: 12px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .copy-keywords-button:hover {
+            background-color: #0056b3;
+        }
+
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2996839415438815"
      crossorigin="anonymous"></script>
 </head>
 <body>
-    <!-- Header -->
+     <!-- Header -->
     <header class="header">
         <div class="logo">Keywords From Urls</div>
         <nav>
             <a href="https://keywordsfromurls.com/">Home</a>
-        </nav>
+            <a href="chrome-extension-for-keyword-extraction-from-urls.html">Chrome Extention</a>
+              <a href="about-us.html" target="_blank">About Us</a>
+            <a href="contact-us.html" target="_blank">Contact Us</a>
+                   <div class="dropdown-menu-container">
+  <div class="dropdown">
+    <button class="dropdown-btn" onclick="toggleDropdown(event)">Url Tools</button>
+    <div class="dropdown-content" style="display: none;">
+      <a href="sitemap-url-extractor-tool.html">Sitemap URL Extractor</a>
+      <a href="title-url-generator.html">Title URL Generator</a>
+      <a href="url-encoder-decoder.html">URL Encoder/Decoder</a>
+      <a href="url-parser-tool.html">URL Parser</a>                           
+    </div>
+  </div>
+</div>
+ </nav>
     </header>
 
     <!-- Main Content -->
@@ -189,5 +470,31 @@
             <a href="https://keywordsfromurls.com/Terms&condition.html">Terms&condition</a>
         </div>
     </footer>
+     <script>
+function toggleDropdown(event) {
+  const dropdown = event.target.nextElementSibling;
+  const isVisible = dropdown.style.display === 'block';
+
+  // Close all other dropdowns
+  document.querySelectorAll('.dropdown-content').forEach((content) => {
+    content.style.display = 'none';
+  });
+
+  // Toggle the clicked dropdown
+  if (!isVisible) {
+    dropdown.style.display = 'block';
+  }
+}
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.dropdown')) {
+    document.querySelectorAll('.dropdown-content').forEach((content) => {
+      content.style.display = 'none';
+    });
+  }
+});
+            </script>
+
 </body>
 </html>
