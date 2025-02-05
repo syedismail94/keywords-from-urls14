@@ -6,8 +6,7 @@
     <meta name="description" content="Get common and unique keywords separately for better SEO optimization. Group multiple keywords effortlessly with our Keywords Grouping Tool.">
 <link rel="canonical" href="https://keywordsfromurls.com/Keyword-Grouping-Tool.html">
 
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/boottrap.bundle.min.js"></script>
+  
    <title>Keyword Grouping Tool | Organize & Optimize Keywords</title>
 
     <style>
@@ -47,39 +46,70 @@
             text-align: center;
             margin: 20px 0;
         }
-         /* Header */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-            background-color: #007BFF;
-            color: white;
-        }
+        /* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #007BFF;
+    color: white;
+}
 
-        .header .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
+.header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
 
-        .header nav {
-            display: flex;
-            gap: 15px;
-        }
+.header nav {
+    display: flex;
+    gap: 15px;
+}
 
-        .header nav a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
+.header nav a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
 
-        .header nav a:hover {
-            background-color: #0056b3;
-        }
+.header nav a:hover {
+    background-color: #0056b3;
+}
 
-        /* Main Content */
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header nav {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .header nav a {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .header .logo {
+        font-size: 20px;
+    }
+
+    .header nav a {
+        font-size: 14px;
+        padding: 10px 5px;
+    }
+}
+
+ /* Main Content */
         .main {
             padding: 20px;
             max-width: 1200px;
@@ -106,7 +136,7 @@
         .categories button:hover {
             background-color: #0056b3;
         }
-         /* Footer */
+  /* Footer */
         .footer {
             background-color: #007BFF;
             color: white;
@@ -160,6 +190,15 @@
             .footer .right {
                 flex-direction: column;
             }
+            p {
+                text-align: center;
+                font-size: 1rem;
+                margin-top: 20px;
+            }
+        }
+
+
+
             #faq {
     margin-top: 10px;
 }
@@ -260,7 +299,6 @@
                 width: 100%;
             }
         }
-     
    </style>
     <script type="application/ld+json">
 {
@@ -368,28 +406,28 @@
 </div>
  </nav>
     </header>
-    <div class="container text-center">
-        <h1 class="my-4">Keyword Grouping Tool</h1>
-        <div class="form-floating mb-4">
-            <textarea class="form-control text-center" id="inputData" maxlength="5000" style="height: 100px;"></textarea>
+    <div class="container">
+        <h1 class="">Keyword Grouping Tool</h1>
+        <div class="">
+            <textarea class="" id="inputData" maxlength="5000" style="height: 100px;"></textarea>
             <label for="inputData">Input keywords here</label>
         </div>
-        <div class="center-btn">
-            <button class="btn btn-primary" id="processButton" onclick="processData()">Start Keyword Grouping</button>
+        <div class="">
+            <button class="" id="processButton" onclick="processData()">Start Keyword Grouping</button>
         </div>
         <div class="output" id="outputSection" style="display: none;">
-            <button class="copy-btn btn btn-success" onclick="copySection('outputArea', this)">Copy Output</button>
+            <button class="" onclick="copySection('outputArea', this)">Copy Output</button>
             <div id="outputArea"></div>
         </div>
         <div class="summary" id="summarySection" style="display: none;">
             <div>
                 <h2>Common Topics</h2>
-                <button class="copy-btn btn btn-warning" onclick="copySection('commonTopics', this)">Copy Common</button>
+                <button class="" onclick="copySection('commonTopics', this)">Copy Common</button>
                 <div id="commonTopics"></div>
             </div>
             <div class="mt-4">
                 <h2>Unique Topics</h2>
-                <button class="copy-btn btn btn-info" onclick="copySection('uniqueTopics', this)">Copy Unique</button>
+                <button class="" onclick="copySection('uniqueTopics', this)">Copy Unique</button>
                 <div id="uniqueTopics"></div>
             </div>
         </div>
