@@ -378,6 +378,144 @@
                 width: 100%;
             }
         }
+      .kg-container {
+    width: 90%;
+    max-width: 800px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.kg-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Input Section */
+.kg-input-section {
+    margin-bottom: 20px;
+}
+
+.kg-input {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: vertical;
+    outline: none;
+}
+
+.kg-input:focus {
+    border-color: #4CAF50;
+}
+
+/* Button Section */
+.kg-button-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.kg-process-btn {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 12px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.kg-process-btn:hover {
+    background-color: #45a049;
+}
+
+/* Output Section */
+.kg-output {
+    display: none;
+    margin-top: 20px;
+}
+
+.kg-copy-btn {
+    background-color: #2196F3;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.kg-copy-btn:hover {
+    background-color: #0b7dda;
+}
+
+#outputArea {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+}
+
+/* Summary Section */
+.kg-summary {
+    display: none;
+    margin-top: 30px;
+}
+
+.kg-summary-section {
+    margin-bottom: 20px;
+}
+
+.kg-summary-section h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.kg-line {
+    font-size: 16px;
+    color: #555;
+    margin: 5px 0;
+}
+
+.kg-highlight {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .kg-container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .kg-title {
+        font-size: 24px;
+    }
+
+    .kg-process-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .kg-input {
+        font-size: 14px;
+        height: 80px;
+    }
+
+    .kg-copy-btn {
+        padding: 6px 18px;
+        font-size: 14px;
+    }
+}
     </style>
     <script type="application/ld+json">
 {
