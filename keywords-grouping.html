@@ -18,7 +18,7 @@
     <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <style>
-         /* General Reset */
+                 /* General Reset */
         * {
             margin: 0;
             padding: 0;
@@ -32,69 +32,68 @@
             background-color: #f4f4f9;
         }
 
-     /* Header */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    background-color: #007BFF;
-    color: white;
-}
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #007BFF;
+            color: white;
+        }
 
-.header .logo {
-    font-size: 24px;
-    font-weight: bold;
-}
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
 
-.header nav {
-    display: flex;
-    gap: 15px;
-}
+        .header nav {
+            display: flex;
+            gap: 15px;
+        }
 
-.header nav a {
-    color: white;
-    text-decoration: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
+        .header nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
 
-.header nav a:hover {
-    background-color: #0056b3;
-}
+        .header nav a:hover {
+            background-color: #0056b3;
+        }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
 
-    .header nav {
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-    }
+            .header nav {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
 
-    .header nav a {
-        display: block;
-        width: 100%;
-        text-align: center;
-    }
-}
+            .header nav a {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+        }
 
-@media (max-width: 480px) {
-    .header .logo {
-        font-size: 20px;
-    }
+        @media (max-width: 480px) {
+            .header .logo {
+                font-size: 20px;
+            }
 
-    .header nav a {
-        font-size: 14px;
-        padding: 10px 5px;
-    }
-}
-
+            .header nav a {
+                font-size: 14px;
+                padding: 10px 5px;
+            }
+        }
 
         /* Main Content */
         .main {
@@ -445,6 +444,12 @@
 .kg-output {
     display: none;
     margin-top: 20px;
+    margin-bottom: 40px; /* Add margin to push content below */
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .kg-copy-btn {
@@ -473,6 +478,12 @@
 .kg-summary {
     display: none;
     margin-top: 30px;
+    margin-bottom: 40px; /* Add margin to push content below */
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .kg-summary-section {
@@ -569,6 +580,7 @@
                 padding: 0 10px;
             }
         }
+
     </style>
    <script type="application/ld+json">
 {
