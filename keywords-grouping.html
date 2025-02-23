@@ -5,20 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Get common and unique keywords separately for better SEO optimization. Group multiple keywords effortlessly with our Keywords Grouping Tool.">
-<link rel="canonical" href="https://keywordsfromurls.com/keywords-grouping.html">
-<title>Keyword Grouping Tool | Organize & Optimize Keywords</title>
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="canonical" href="https://keywordsfromurls.com/keywords-grouping.html">
+    <title>Keyword Grouping Tool | Organize & Optimize Keywords</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   
- <!-- Bootstrap JS -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-     <!-- Favicons -->
+    <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <style>
-                 /* General Reset */
+    <style>
+        /* General Reset */
         * {
             margin: 0;
             padding: 0;
@@ -287,33 +287,35 @@
             color: #333;
             font-size: 24px;
             text-decoration: none;
-             padding: 0 5px;
+            padding: 0 5px;
         }
 
         .share-icons a:hover {
             color: #007BFF;
         }
-         #faq {
-        background-color: #f9f9f9;
-        padding: 40px 20px;
-        margin-top: 50px;
-    }
-    #faq h2 {
-        text-align: center;
-        margin-bottom: 30px;
-    }
-    .faq-item {
-        margin-bottom: 20px;
-    }
-    .faq-item h3 {
-        font-size: 1.2em;
-        color: #333;
-    }
-    .faq-item p {
-        font-size: 1em;
-        color: #666;
-        line-height: 1.6;
-    }
+
+        #faq {
+            background-color: #f9f9f9;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+        #faq h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        .faq-item h3 {
+            font-size: 1.2em;
+            color: #333;
+        }
+        .faq-item p {
+            font-size: 1em;
+            color: #666;
+            line-height: 1.6;
+        }
+
         /* Dropdown container */
         .dropdown {
             position: relative;
@@ -332,7 +334,6 @@
             width: 100%;
             max-width: 250px;
             text-align: left;
-            
         }
 
         .dropdown-btn:hover {
@@ -377,282 +378,238 @@
                 width: 100%;
             }
         }
-   
 
-.kg-container {
-    width: 90%;
-    max-width: 800px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.kg-title {
-    font-size: 28px;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-/* Input Section */
-.kg-input-section {
-    margin-bottom: 20px;
-}
-
-.kg-input {
-    width: 100%;
-    height: 100px;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    resize: vertical;
-    outline: none;
-}
-
-.kg-input:focus {
-    border-color: #4CAF50;
-}
-
-/* Button Section */
-.kg-button-section {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.kg-process-btn {
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 12px 30px;
-    font-size: 18px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.kg-process-btn:hover {
-    background-color: #45a049;
-}
-
-/* Output Section */
-.kg-output {
-    display: none;
-    margin-top: 20px;
-    margin-bottom: 40px; /* Add margin to push content below */
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.kg-copy-btn {
-    background-color: #2196F3;
-    color: white;
-    padding: 8px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 20px;
-    transition: background-color 0.3s ease;
-}
-
-.kg-copy-btn:hover {
-    background-color: #0b7dda;
-}
-
-#outputArea {
-    margin-top: 20px;
-    font-size: 16px;
-    color: #333;
-    line-height: 1.5;
-}
-
-/* Summary Section */
-.kg-summary {
-    display: none;
-    margin-top: 30px;
-    margin-bottom: 40px; /* Add margin to push content below */
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.kg-summary-section {
-    margin-bottom: 20px;
-}
-
-.kg-summary-section h2 {
-    font-size: 24px;
-    color: #333;
-}
-
-.kg-line {
-    font-size: 16px;
-    color: #555;
-    margin: 5px 0;
-}
-
-.kg-highlight {
-    color: #4CAF50;
-    font-weight: bold;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .kg-container {
-        width: 95%;
-        padding: 15px;
-    }
-
-    .kg-title {
-        font-size: 24px;
-    }
-
-    .kg-process-btn {
-        padding: 10px 20px;
-        font-size: 16px;
-    }
-
-    .kg-input {
-        font-size: 14px;
-        height: 80px;
-    }
-
-    .kg-copy-btn {
-        padding: 6px 18px;
-        font-size: 14px;
-    }
-
-    #faq {
-        background-color: #f9f9f9;
-        padding: 40px 20px;
-        margin-top: 50px;
-    }
-    #faq h2 {
-        text-align: center;
-        margin-bottom: 30px;
-    }
-    .faq-item {
-        margin-bottom: 20px;
-    }
-    .faq-item h3 {
-        font-size: 1.2em;
-        color: #333;
-    }
-    .faq-item p {
-        font-size: 1em;
-        color: #666;
-        line-height: 1.6;
-    }
-        /* Dropdown container */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-    center;
+        .kg-container {
+            width: 90%;
+            max-width: 800px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 20px auto; /* Added margin for spacing */
         }
 
-        p {
-            font-size: 18px;
-            line-height: 1.6;
+        .kg-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #333;
             margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Input Section */
+        .kg-input-section {
+            margin-bottom: 20px;
+        }
+
+        .kg-input {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .kg-input:focus {
+            border-color: #4CAF50;
+        }
+
+        /* Button Section */
+        .kg-button-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .kg-process-btn {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 12px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .kg-process-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Output Section */
+        .kg-output {
+            display: none;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .kg-copy-btn {
+            background-color: #2196F3;
+            color: white;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .kg-copy-btn:hover {
+            background-color: #0b7dda;
+        }
+
+        #outputArea {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        /* Summary Section */
+        .kg-summary {
+            display: none;
+            margin-top: 30px;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .kg-summary-section {
+            margin-bottom: 20px;
+        }
+
+        .kg-summary-section h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .kg-line {
+            font-size: 16px;
             color: #555;
-            text-align: justify;
-            padding: 0 15px;
+            margin: 5px 0;
         }
 
+        .kg-highlight {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            h2 {
-                font-size: 22px;
+            .kg-container {
+                width: 95%;
+                padding: 15px;
             }
 
-            p {
+            .kg-title {
+                font-size: 24px;
+            }
+
+            .kg-process-btn {
+                padding: 10px 20px;
                 font-size: 16px;
-                padding: 0 10px;
+            }
+
+            .kg-input {
+                font-size: 14px;
+                height: 80px;
+            }
+
+            .kg-copy-btn {
+                padding: 6px 18px;
+                font-size: 14px;
             }
         }
-
     </style>
-   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Keyword Grouping Tool",
-  "url": "https://keywordsfromurls.com/Keyword-Grouping.html",
-  "description": "Effortlessly group related keywords for better SEO strategy. Organize keywords by themes to create more targeted content.",
-  "applicationCategory": "SEO Tool",
-  "operatingSystem": "All",
-  "offers": {
-    "@type": "Offer",
-    "price": "0.00",
-    "priceCurrency": "USD"
-  },
-  "author": {
-    "@type": "Person",
-    "name": "Syed Ismail"
-  },
-  "softwareVersion": "1.0",
-  "datePublished": "2025-01-17",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Keywords From URLs",
-    "url": "https://keywordsfromurls.com"
-  },
-  "potentialAction": {
-    "@type": "UseAction",
-    "target": "https://keywordsfromurls.com/Keyword-Grouping-Tool.html"
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "reviewCount": "250"
-  }
-}
-</script>
-
-  
-    </head>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Keyword Grouping Tool",
+      "url": "https://keywordsfromurls.com/Keyword-Grouping.html",
+      "description": "Effortlessly group related keywords for better SEO strategy. Organize keywords by themes to create more targeted content.",
+      "applicationCategory": "SEO Tool",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Syed Ismail"
+      },
+      "softwareVersion": "1.0",
+      "datePublished": "2025-01-17",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Keywords From URLs",
+        "url": "https://keywordsfromurls.com"
+      },
+      "potentialAction": {
+        "@type": "UseAction",
+        "target": "https://keywordsfromurls.com/Keyword-Grouping-Tool.html"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "250"
+      }
+    }
+    </script>
+</head>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2996839415438815"
      crossorigin="anonymous"></script>
-        <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11525935043"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-11525935043'); </script>
-<!-- Event snippet for Page view conversion page --> <script> gtag('event', 'conversion', {'send_to': 'AW-11525935043/y2SxCPHExoMaEMOf__cq'}); </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11525935043"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-11525935043');
+</script>
+<!-- Event snippet for Page view conversion page -->
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-11525935043/y2SxCPHExoMaEMOf__cq'});
+</script>
 <body>
-   
-  <!-- Header -->
+    <!-- Header -->
     <header class="header">
         <div class="logo">Keywords From Urls</div>
         <nav>
             <a href="https://keywordsfromurls.com/">Home</a>
-            <a href="chrome-extension-for-keyword-extraction-from-urls.html">Chrome Extention</a>
-              <a href="about-us.html" target="_blank">About Us</a>
+            <a href="chrome-extension-for-keyword-extraction-from-urls.html">Chrome Extension</a>
+            <a href="about-us.html" target="_blank">About Us</a>
             <a href="contact-us.html" target="_blank">Contact Us</a>
-                   <div class="dropdown-menu-container">
-  <div class="dropdown">
-    <button class="dropdown-btn" onclick="toggleDropdown(event)">Url Tools</button>
-    <div class="dropdown-content" style="display: none;">
-      <a href="sitemap-url-extractor-tool.html">Sitemap URL Extractor</a>
-      <a href="title-url-generator.html">Title URL Generator</a>
-      <a href="url-encoder-decoder.html">URL Encoder/Decoder</a>
-      <a href="url-parser-tool.html">URL Parser</a>                           
-    </div>
-  </div>
-</div>
- </nav>
+            <div class="dropdown-menu-container">
+                <div class="dropdown">
+                    <button class="dropdown-btn" onclick="toggleDropdown(event)">Url Tools</button>
+                    <div class="dropdown-content" style="display: none;">
+                        <a href="sitemap-url-extractor-tool.html">Sitemap URL Extractor</a>
+                        <a href="title-url-generator.html">Title URL Generator</a>
+                        <a href="url-encoder-decoder.html">URL Encoder/Decoder</a>
+                        <a href="url-parser-tool.html">URL Parser</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
     </header>
     <br>
     <br>
-    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; text-align: center;">
-  
-  <div class="kg-container">
+    <div class="kg-container">
         <h1 class="kg-title">Keyword Grouping Tool</h1>
         <div class="kg-input-section">
             <textarea class="kg-input" id="inputData" maxlength="5000" placeholder="Input keywords here" style="height: 100px;"></textarea>
@@ -677,150 +634,151 @@
             </div>
         </div>
     </div>
-        </div>
- <script>
-       // Function to process the keyword grouping
-function processData() {
-    const input = document.getElementById("inputData").value.trim();
-    const outputArea = document.getElementById("outputArea");
-    const outputSection = document.getElementById("outputSection");
-    const processButton = document.getElementById("processButton");
-    const summarySection = document.getElementById("summarySection");
-    const commonTopics = document.getElementById("commonTopics");
-    const uniqueTopics = document.getElementById("uniqueTopics");
+    <script>
+        // Function to process the keyword grouping
+        function processData() {
+            const input = document.getElementById("inputData").value.trim();
+            const outputArea = document.getElementById("outputArea");
+            const outputSection = document.getElementById("outputSection");
+            const processButton = document.getElementById("processButton");
+            const summarySection = document.getElementById("summarySection");
+            const commonTopics = document.getElementById("commonTopics");
+            const uniqueTopics = document.getElementById("uniqueTopics");
 
-    // Clear previous results
-    outputArea.innerHTML = "";
-    outputSection.style.display = "none";
-    summarySection.style.display = "none";
+            // Clear previous results
+            outputArea.innerHTML = "";
+            outputSection.style.display = "none";
+            summarySection.style.display = "none";
 
-    // Check if input is empty
-    if (!input) {
-        alert("Please enter some keywords!");
-        return;
-    }
+            // Check if input is empty
+            if (!input) {
+                alert("Please enter some keywords!");
+                return;
+            }
 
-    // Split input into lines and limit to 500 lines
-    const lines = input.split("\n").map(line => line.trim()).slice(0, 500);
-    const wordCount = {};
-    const seenCommonWords = new Set();
-    const lineWiseCommonWords = [];
+            // Split input into lines and limit to 500 lines
+            const lines = input.split("\n").map(line => line.trim()).slice(0, 500);
+            const wordCount = {};
+            const seenCommonWords = new Set();
+            const lineWiseCommonWords = [];
 
-    // Process each line
-    lines.forEach(line => {
-        const words = line.split(/\s+/);
-        const lineWords = new Set();
-        words.forEach(word => {
-            wordCount[word] = (wordCount[word] || 0) + 1;
-            lineWords.add(word);
-        });
+            // Process each line
+            lines.forEach(line => {
+                const words = line.split(/\s+/);
+                const lineWords = new Set();
+                words.forEach(word => {
+                    wordCount[word] = (wordCount[word] || 0) + 1;
+                    lineWords.add(word);
+                });
 
-        // Identify common words
-        const lineCommonWords = Array.from(lineWords).filter(
-            word => wordCount[word] > 1 && !seenCommonWords.has(word)
-        );
+                // Identify common words
+                const lineCommonWords = Array.from(lineWords).filter(
+                    word => wordCount[word] > 1 && !seenCommonWords.has(word)
+                );
 
-        lineCommonWords.forEach(word => seenCommonWords.add(word));
-        lineWiseCommonWords.push(lineCommonWords);
-    });
+                lineCommonWords.forEach(word => seenCommonWords.add(word));
+                lineWiseCommonWords.push(lineCommonWords);
+            });
 
-    let outputHTML = "";
-    let commonHTML = "";
-    let uniqueHTML = "";
+            let outputHTML = "";
+            let commonHTML = "";
+            let uniqueHTML = "";
 
-    // Generate output HTML
-    lines.forEach((line, index) => {
-        const highlightedWords = [];
-        const uniqueWords = [];
-        const highlightedLine = line
-            .split(/\s+/)
-            .map(word => {
-                if (wordCount[word] > 1) {
-                    highlightedWords.push(word);
-                    return `<span class="kg-highlight">${word}</span>`;
-                } else {
-                    uniqueWords.push(word);
-                    return word;
+            // Generate output HTML
+            lines.forEach((line, index) => {
+                const highlightedWords = [];
+                const uniqueWords = [];
+                const highlightedLine = line
+                    .split(/\s+/)
+                    .map(word => {
+                        if (wordCount[word] > 1) {
+                            highlightedWords.push(word);
+                            return `<span class="kg-highlight">${word}</span>`;
+                        } else {
+                            uniqueWords.push(word);
+                            return word;
+                        }
+                    })
+                    .join(" ");
+
+                outputHTML += `<div>${highlightedLine}</div>`;
+
+                // Add common and unique words to their respective sections
+                if (lineWiseCommonWords[index].length > 0) {
+                    commonHTML += `<div class="kg-line">${lineWiseCommonWords[index].join(" ")}</div>`;
                 }
-            })
-            .join(" ");
 
-        outputHTML += `<div>${highlightedLine}</div>`;
+                if (uniqueWords.length > 0) {
+                    uniqueHTML += `<div class="kg-line">${uniqueWords.join(" ")}</div>`;
+                }
+            });
 
-        // Add common and unique words to their respective sections
-        if (lineWiseCommonWords[index].length > 0) {
-            commonHTML += `<div class="kg-line">${lineWiseCommonWords[index].join(" ")}</div>`;
+            // Display results
+            outputArea.innerHTML = outputHTML;
+            outputSection.style.display = "block";
+
+            commonTopics.innerHTML = commonHTML;
+            uniqueTopics.innerHTML = uniqueHTML;
+            summarySection.style.display = "block";
+
+            // Update button text temporarily
+            processButton.innerHTML = "Go Below!";
+            setTimeout(() => {
+                processButton.innerHTML = "Start Keyword Grouping";
+            }, 4000);
         }
 
-        if (uniqueWords.length > 0) {
-            uniqueHTML += `<div class="kg-line">${uniqueWords.join(" ")}</div>`;
+        // Function to copy section content
+        function copySection(sectionId, button) {
+            const section = document.getElementById(sectionId);
+            const tempTextArea = document.createElement("textarea");
+            tempTextArea.value = section.innerText;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempTextArea);
+
+            // Update button text temporarily
+            button.innerHTML = "Copied!";
+            setTimeout(() => {
+                button.innerHTML = "Copy";
+            }, 4000);
         }
-    });
 
-    // Display results
-    outputArea.innerHTML = outputHTML;
-    outputSection.style.display = "block";
+        // Function to toggle dropdown
+        function toggleDropdown(event) {
+            const dropdown = event.target.nextElementSibling;
+            const isVisible = dropdown.style.display === 'block';
 
-    commonTopics.innerHTML = commonHTML;
-    uniqueTopics.innerHTML = uniqueHTML;
-    summarySection.style.display = "block";
+            // Close all other dropdowns
+            document.querySelectorAll('.dropdown-content').forEach((content) => {
+                content.style.display = 'none';
+            });
 
-    // Update button text temporarily
-    processButton.innerHTML = "Go Below!";
-    setTimeout(() => {
-        processButton.innerHTML = "Start Keyword Grouping";
-    }, 4000);
-}
+            // Toggle the clicked dropdown
+            if (!isVisible) {
+                dropdown.style.display = 'block';
+            }
+        }
 
-// Function to copy section content
-function copySection(sectionId, button) {
-    const section = document.getElementById(sectionId);
-    const tempTextArea = document.createElement("textarea");
-    tempTextArea.value = section.innerText;
-    document.body.appendChild(tempTextArea);
-    tempTextArea.select();
-    document.execCommand("copy");
-    document.body.removeChild(tempTextArea);
-
-    // Update button text temporarily
-    button.innerHTML = "Copied!";
-    setTimeout(() => {
-        button.innerHTML = "Copy";
-    }, 4000);
-}
-
-// Function to toggle dropdown
-function toggleDropdown(event) {
-    const dropdown = event.target.nextElementSibling;
-    const isVisible = dropdown.style.display === 'block';
-
-    // Close all other dropdowns
-    document.querySelectorAll('.dropdown-content').forEach((content) => {
-        content.style.display = 'none';
-    });
-
-    // Toggle the clicked dropdown
-    if (!isVisible) {
-        dropdown.style.display = 'block';
-    }
-}
-
-// Close dropdowns when clicking outside
-document.addEventListener('click', (e) => {
-    if (!e.target.closest('.dropdown')) {
-        document.querySelectorAll('.dropdown-content').forEach((content) => {
-            content.style.display = 'none';
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown-content').forEach((content) => {
+                    content.style.display = 'none';
+                });
+            }
         });
-    }
-});
-</script>
-<br>
+    </script>
     <br>
     <br>
-             <!-- Footer -->
-    <footer class="footer"><div class="left">&copy; 2025 Keywords From Urls | <a href="//www.dmca.com/Protection/Status.aspx?ID=6cf02a5f-5f1e-483c-88f4-70ff117b638f" title="DMCA.com Protection Status" class="dmca-badge"> 
-<img src ="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=6cf02a5f-5f1e-483c-88f4-70ff117b638f"  alt="DMCA.com Protection Status" /></a>
-<script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script></div>
+    <br>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="left">&copy; 2025 Keywords From Urls | <a href="//www.dmca.com/Protection/Status.aspx?ID=6cf02a5f-5f1e-483c-88f4-70ff117b638f" title="DMCA.com Protection Status" class="dmca-badge"> 
+            <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=6cf02a5f-5f1e-483c-88f4-70ff117b638f"  alt="DMCA.com Protection Status" /></a>
+            <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
+        </div>
         <div class="right">
             <a href="about-us.html" target="_blank">About Us</a>
             <a href="contact-us.html" target="_blank">Contact Us</a>
@@ -829,7 +787,5 @@ document.addEventListener('click', (e) => {
             <a href="Terms&condition.html" target="_blank">Terms&condition</a>
         </div>
     </footer>
-    </body>
-
+</body>
 </html>
-    
