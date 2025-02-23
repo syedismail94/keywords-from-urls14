@@ -678,133 +678,142 @@
         </div>
     </div>
         </div>
- 
-         <script>
-        function processData() {
-            const input = document.getElementById("inputData").value.trim();
-            const outputArea = document.getElementById("outputArea");
-            const outputSection = document.getElementById("outputSection");
-            const processButton = document.getElementById("processButton");
-            const summarySection = document.getElementById("summarySection");
-            const commonTopics = document.getElementById("commonTopics");
-            const uniqueTopics = document.getElementById("uniqueTopics");
+ <script>
+       // Function to process the keyword grouping
+function processData() {
+    const input = document.getElementById("inputData").value.trim();
+    const outputArea = document.getElementById("outputArea");
+    const outputSection = document.getElementById("outputSection");
+    const processButton = document.getElementById("processButton");
+    const summarySection = document.getElementById("summarySection");
+    const commonTopics = document.getElementById("commonTopics");
+    const uniqueTopics = document.getElementById("uniqueTopics");
 
-            outputArea.innerHTML = ""; 
-            outputSection.style.display = "none"; 
-            summarySection.style.display = "none"; 
+    // Clear previous results
+    outputArea.innerHTML = "";
+    outputSection.style.display = "none";
+    summarySection.style.display = "none";
 
-            if (!input) {
-                alert("Please enter some data!");
-                return;
-            }
+    // Check if input is empty
+    if (!input) {
+        alert("Please enter some keywords!");
+        return;
+    }
 
-            const lines = input.split("\n").map(line => line.trim()).slice(0, 500);
-            const wordCount = {}; 
-            const seenCommonWords = new Set();
-            const lineWiseCommonWords = [];
+    // Split input into lines and limit to 500 lines
+    const lines = input.split("\n").map(line => line.trim()).slice(0, 500);
+    const wordCount = {};
+    const seenCommonWords = new Set();
+    const lineWiseCommonWords = [];
 
-            lines.forEach(line => {
-                const words = line.split(/\s+/);
-                const lineWords = new Set();
-                words.forEach(word => {
-                    wordCount[word] = (wordCount[word] || 0) + 1;
-                    lineWords.add(word);
-                });
+    // Process each line
+    lines.forEach(line => {
+        const words = line.split(/\s+/);
+        const lineWords = new Set();
+        words.forEach(word => {
+            wordCount[word] = (wordCount[word] || 0) + 1;
+            lineWords.add(word);
+        });
 
-                const lineCommonWords = Array.from(lineWords).filter(
-                    word => wordCount[word] > 1 && !seenCommonWords.has(word)
-                );
+        // Identify common words
+        const lineCommonWords = Array.from(lineWords).filter(
+            word => wordCount[word] > 1 && !seenCommonWords.has(word)
+        );
 
-                lineCommonWords.forEach(word => seenCommonWords.add(word));
+        lineCommonWords.forEach(word => seenCommonWords.add(word));
+        lineWiseCommonWords.push(lineCommonWords);
+    });
 
-                lineWiseCommonWords.push(lineCommonWords);
-            });
+    let outputHTML = "";
+    let commonHTML = "";
+    let uniqueHTML = "";
 
-            let outputHTML = "";
-            let commonHTML = "";
-            let uniqueHTML = "";
-
-            lines.forEach((line, index) => {
-                const highlightedWords = [];
-                const uniqueWords = [];
-                const highlightedLine = line
-                    .split(/\s+/)
-                    .map(word => {
-                        if (wordCount[word] > 1) {
-                            highlightedWords.push(word);
-                            return `<span class="kg-highlight">${word}</span>`;
-                        } else {
-                            uniqueWords.push(word);
-                            return word;
-                        }
-                    })
-                    .join(" ");
-
-                outputHTML += `<div>${highlightedLine}</div>`;
-
-                if (lineWiseCommonWords[index].length > 0) {
-                    commonHTML += `<div class="kg-line">${lineWiseCommonWords[index].join(" ")}</div>`;
+    // Generate output HTML
+    lines.forEach((line, index) => {
+        const highlightedWords = [];
+        const uniqueWords = [];
+        const highlightedLine = line
+            .split(/\s+/)
+            .map(word => {
+                if (wordCount[word] > 1) {
+                    highlightedWords.push(word);
+                    return `<span class="kg-highlight">${word}</span>`;
+                } else {
+                    uniqueWords.push(word);
+                    return word;
                 }
+            })
+            .join(" ");
 
-                if (uniqueWords.length > 0) {
-                    uniqueHTML += `<div class="kg-line">${uniqueWords.join(" ")}</div>`;
-                }
-            });
+        outputHTML += `<div>${highlightedLine}</div>`;
 
-            outputArea.innerHTML = outputHTML;
-            outputSection.style.display = "block";
-
-            commonTopics.innerHTML = commonHTML;
-            uniqueTopics.innerHTML = uniqueHTML;
-            summarySection.style.display = "block";
-
-            processButton.innerHTML = "Go Below!";
-            setTimeout(() => {
-                processButton.innerHTML = "Start Keyword Grouping";
-            }, 4000);
+        // Add common and unique words to their respective sections
+        if (lineWiseCommonWords[index].length > 0) {
+            commonHTML += `<div class="kg-line">${lineWiseCommonWords[index].join(" ")}</div>`;
         }
 
-        function copySection(sectionId, button) {
-            const section = document.getElementById(sectionId);
-            const tempTextArea = document.createElement("textarea");
-            tempTextArea.value = section.innerText;
-            document.body.appendChild(tempTextArea);
-            tempTextArea.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempTextArea);
+        if (uniqueWords.length > 0) {
+            uniqueHTML += `<div class="kg-line">${uniqueWords.join(" ")}</div>`;
+        }
+    });
 
-            button.innerHTML = "Copied!";
-            setTimeout(() => {
-                button.innerHTML = "Copy";
-            }, 4000);
-        } 
-    </script>
+    // Display results
+    outputArea.innerHTML = outputHTML;
+    outputSection.style.display = "block";
 
-       <script>
+    commonTopics.innerHTML = commonHTML;
+    uniqueTopics.innerHTML = uniqueHTML;
+    summarySection.style.display = "block";
+
+    // Update button text temporarily
+    processButton.innerHTML = "Go Below!";
+    setTimeout(() => {
+        processButton.innerHTML = "Start Keyword Grouping";
+    }, 4000);
+}
+
+// Function to copy section content
+function copySection(sectionId, button) {
+    const section = document.getElementById(sectionId);
+    const tempTextArea = document.createElement("textarea");
+    tempTextArea.value = section.innerText;
+    document.body.appendChild(tempTextArea);
+    tempTextArea.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempTextArea);
+
+    // Update button text temporarily
+    button.innerHTML = "Copied!";
+    setTimeout(() => {
+        button.innerHTML = "Copy";
+    }, 4000);
+}
+
+// Function to toggle dropdown
 function toggleDropdown(event) {
-  const dropdown = event.target.nextElementSibling;
-  const isVisible = dropdown.style.display === 'block';
+    const dropdown = event.target.nextElementSibling;
+    const isVisible = dropdown.style.display === 'block';
 
-  // Close all other dropdowns
-  document.querySelectorAll('.dropdown-content').forEach((content) => {
-    content.style.display = 'none';
-  });
+    // Close all other dropdowns
+    document.querySelectorAll('.dropdown-content').forEach((content) => {
+        content.style.display = 'none';
+    });
 
-  // Toggle the clicked dropdown
-  if (!isVisible) {
-    dropdown.style.display = 'block';
-  }
+    // Toggle the clicked dropdown
+    if (!isVisible) {
+        dropdown.style.display = 'block';
+    }
 }
 
 // Close dropdowns when clicking outside
 document.addEventListener('click', (e) => {
-  if (!e.target.closest('.dropdown')) {
-    document.querySelectorAll('.dropdown-content').forEach((content) => {
-      content.style.display = 'none';
-    });
-  }
+    if (!e.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown-content').forEach((content) => {
+            content.style.display = 'none';
+        });
+    }
 });
-            </script>
+</script>
 <br>
     <br>
     <br>
