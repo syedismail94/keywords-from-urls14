@@ -1,55 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Excel to VCF Converter</title>
-    <meta name="description" content="Convert Excel files to VCF format easily with our free online tool. Download your contacts in VCF format for easy import into mobile devices.">
-    <meta name="keywords" content="Excel to VCF, convert Excel to VCF, VCF converter, contact export, Excel contacts to VCF">
-    <meta name="author" content="Excel to VCF Tool">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "Excel to VCF Converter",
-            "url": ""
-        }
-    </script>
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-                {
-                    "@type": "Question",
-                    "name": "How to use the Excel to VCF Converter?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "Simply upload your Excel file and click the Convert & Download button to get your VCF file."
-                    }
-                },
-                {
-                    "@type": "Question",
-                    "name": "Is this tool free to use?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "Yes, our tool is completely free to use with no hidden charges."
-                    }
-                },
-                {
-                    "@type": "Question",
-                    "name": "Can I use this tool on mobile?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "Yes, our website is fully responsive and works on both mobile and desktop devices."
-                    }
-                }
-            ]
-        }
-    </script>
+    <meta name="description" content="Extract Bulk or single keywrods from Bulk or single urls in one click.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="canonical" href="https://keywordsfromurls.com/">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+ <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+ <title>Keywords from URLs Extractor|Extract URLs or Keywords from Sitemap in One Click</title>
+
     <style>
-         /* General Reset */
+        /* General Reset */
         * {
             margin: 0;
             padding: 0;
@@ -126,26 +97,117 @@
     }
 }
 
-        .container {
-            max-width: 500px;
-            margin: auto;
-            background: white;
+
+        /* Main Content */
+        .main {
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        h2 {
-            color: #333;
+
+        .categories {
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 20px;
         }
-        input, button {
+
+        .categories button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .categories button:hover {
+            background-color: #0056b3;
+        }
+
+        .container {
+            position: relative;
             width: 100%;
-            margin: 10px 0;
+            max-width: 1200px;
+            margin: 20px auto;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            width: 100%;
+            height: 250px;
             padding: 10px;
             font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            box-sizing: border-box;
+            resize: none;
+            margin-bottom: 10px;
         }
-           /* Footer */
+
+        button {
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            textarea {
+                height: 150px;
+                font-size: 14px;
+            }
+
+            button {
+                font-size: 12px;
+                padding: 5px 10px;
+            }
+        }
+
+        .keyword-list {
+            text-align: center;
+            margin-top: 20px;
+            padding: 13px;
+            border: 2px solid #ddd;
+            background-color: #f9f9f9;
+            position: relative;
+        }
+
+        .copy-keywords-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            font-size: 12px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .copy-keywords-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer */
         .footer {
             background-color: #007BFF;
             color: white;
@@ -234,105 +296,441 @@
         .share-icons a:hover {
             color: #007BFF;
         }
-        .faq {
-            max-width: 600px;
-            margin: 20px auto;
+         #faq {
+        background-color: #f9f9f9;
+        padding: 40px 20px;
+        margin-top: 50px;
+    }
+    #faq h2 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .faq-item {
+        margin-bottom: 20px;
+    }
+    .faq-item h3 {
+        font-size: 1.2em;
+        color: #333;
+    }
+    .faq-item p {
+        font-size: 1em;
+        color: #666;
+        line-height: 1.6;
+    }
+        /* Dropdown container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown button */
+        .dropdown-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 18px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 250px;
             text-align: left;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            
         }
-        .faq h3 {
-            color: #333;
+
+        .dropdown-btn:hover {
+            background-color: #0056b3;
         }
+
+        /* Dropdown content */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background-color:#0056b3;
+            min-width: 100%;
+            max-width: 250px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 12px;
+            text-decoration: none;
+            color: black;
+            font-size: 14px;
+            transition: background 0.3s;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Ensure responsiveness */
+        @media (max-width: 768px) {
+            .dropdown-btn {
+                width: 100%;
+            }
+            .dropdown-content {
+                width: 100%;
+            }
+        }
+        h2,h3 {
+    font-size: 30px;
+    margin: 40px 0;
+    color: #222;
+    text-align: center;
+    font-weight: bold;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #444;
+    text-align: justify;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
     </style>
-    <script type="application/ld+json">
+  
+      <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11525935043"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-11525935043'); </script>
+<!-- Event snippet for Page view conversion page --> <script> gtag('event', 'conversion', {'send_to': 'AW-11525935043/y2SxCPHExoMaEMOf__cq'}); </script>
+
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Keywords from urls Extractor from sitemap Tool",
-  "url": "",
-  "description": "",
-  "mainEntityOfPage": "",
+  "url": "https://keywordsfromurls.com/",
+  "description": "Extract relevant keywords from URLs or text with our Keyword Extractor tool. Get keywords instantly and use them for your SEO or content creation needs.",
+  "mainEntityOfPage": "https://keywordsfromurls.com/",
   "potentialAction": {
     "@type": "Action",
     "name": "Extract Keywords",
-    "target": "",
+    "target": "https://keywordsfromurls.com/",
     "actionStatus": "ActiveActionStatus"
   }
 }
 </script>
-   
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the purpose of the Keywords from URLs tool?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Keywords from URLs tool extracts meaningful keywords from a segment of a URL. It helps you identify relevant keywords for SEO, content creation, or competitive analysis, making it easier to enhance your website's visibility on search engines."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the Keyword Extractor tool work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Keyword Extractor tool works by analyzing a URL and extracting the last meaningful segment of the URL path. It ignores file extensions (e.g., `.html`) and domain names (e.g., `.com`), providing you with precise keywords that you can use to improve your content and SEO strategy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use the Keywords from URLs tool for any URL?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, you can use the Keywords from URLs tool for any valid URL. The tool is designed to handle various types of URLs, including product pages, blog posts, and category pages, making it a versatile tool for extracting keywords from different types of online content."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it necessary to log in to use the Keyword Extractor tool?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, you don’t need to log in to use the Keyword Extractor tool. Simply paste the URL into the input field, and the tool will instantly generate the keywords for you without requiring an account or login."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can the Keyword Grouping and Keyword Density tools benefit my SEO strategy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Keyword Grouping tool helps you organize keywords into related groups, improving content relevance and targeting. The Keyword Density tool helps you calculate how often certain keywords appear in your content, ensuring optimal keyword usage for better SEO performance. Both tools work together to refine and optimize your content strategy."
+      }
+    }
+  ]
+}
+</script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2996839415438815"
+     crossorigin="anonymous"></script>
+    <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-82KNQLY0RC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-82KNQLY0RC');
+</script>
+
+
+
 </head>
-<br>
+
 <body>
- <header class="header">
-        <div class="logo">Excel To vcf </div>
+   
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">Keywords From Urls</div>
         <nav>
             <a href="https://keywordsfromurls.com/">Home</a>
-              <a href="" target="_blank">About Us</a>
-            <a href="" target="_blank">Contact Us</a>
-          </header>
-    <div class="container">
-        <h1>Excel to VCF converter </h1>
-        <p>Convert your Excel contacts into VCF format quickly and easily. Simply upload your file and download the VCF.</p>
-        <input type="file" id="fileInput" accept=".xls,.xlsx">
-        <button onclick="convertToVCF()">Convert & Download VCF</button>
+            <a href="chrome-extension-for-keyword-extraction-from-urls.html">Chrome Extention</a>
+              <a href="about-us.html" target="_blank">About Us</a>
+            <a href="contact-us.html" target="_blank">Contact Us</a>
+                   <div class="dropdown-menu-container">
+  <div class="dropdown">
+    <button class="dropdown-btn" onclick="toggleDropdown(event)">Url Tools</button>
+    <div class="dropdown-content" style="display: none;">
+      <a href="sitemap-url-extractor-tool.html">Sitemap URL Extractor</a>
+      <a href="title-url-generator.html">Title URL Generator</a>
+      <a href="url-encoder-decoder.html">URL Encoder/Decoder</a>
+      <a href="url-parser-tool.html">URL Parser</a>                           
     </div>
+  </div>
+</div>
+ </nav>
+    </header>
 
-    <div class="faq">
-        <h2>Frequently Asked Questions</h2>
-        <h3>How to use the Excel to VCF Converter?</h3>
-        <p>Simply upload your Excel file and click the Convert & Download button to get your VCF file.</p>
-        <h3>Is this tool free to use?</h3>
-        <p>Yes, our tool is completely free to use with no hidden charges.</p>
-        <h3>Can I use this tool on mobile?</h3>
-        <p>Yes, our website is fully responsive and works on both mobile and desktop devices.</p>
-    </div>
-
-    <div class="footer">
-        <span>&copy; 2025 xcelvcf.keywordsfromurls.com</span>
+    <!-- Main Content -->
+    <main class="main">
+        <div class="categories">
+    <a href="keywords-grouping.html" target="_blank">
+        <button>Keyword Grouping</button>
+    </a>
+    <a href="Slug-Generator.html" target="_blank">
+        <button>Slug Generator</button>
+    </a>
+    <a href="Keyword-Density-And-Wordcount-Tool.html" target="_blank">
+        <button>Keyword Density</button>
+    </a>
+</div>
+    </main>
+        <div class="container">
+            <h1>Extract Keywords from URLs & Sitemaps | Keywords Extractor Tool</h1>
+        <textarea id="urlInput" placeholder="Paste up to 500 URLs here"></textarea>
+        <div class="button-container">
+            <button id="copyButton">Copy URLs</button>
+            <button id="getKeywordsButton">Get Keywords</button>
+        </div>
+        <div class="keyword-list" id="keywordList"></div>
     </div>
 
     <script>
-        function convertToVCF() {
-            const fileInput = document.getElementById('fileInput').files[0];
-            if (!fileInput) {
-                alert("Please upload an Excel file");
-                return;
+        document.getElementById('urlInput').addEventListener('paste', function (event) {
+            event.preventDefault();
+            const clipboardData = event.clipboardData || window.clipboardData;
+            const pastedData = clipboardData.getData('Text');
+
+            const urlPattern = /(https?:\/\/[^\s]+)/gi;
+            const urls = pastedData.match(urlPattern);
+
+            if (urls) {
+                const currentUrls = event.target.value.match(urlPattern) || [];
+                if (currentUrls.length + urls.length > 500) {
+                    alert('Only 500 URLs are allowed.');
+                    return;
+                }
+                event.target.value += urls.join('\n') + '\n';
             }
+        });
 
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const data = new Uint8Array(e.target.result);
-                const workbook = XLSX.read(data, { type: 'array' });
-                const sheetName = workbook.SheetNames[0];
-                const sheet = workbook.Sheets[sheetName];
-                const jsonData = XLSX.utils.sheet_to_json(sheet);
+        document.getElementById('copyButton').addEventListener('click', function () {
+            const textarea = document.getElementById('urlInput');
+            const urlPattern = /(https?:\/\/[^\s]+)/gi;
+            const validUrls = textarea.value.match(urlPattern);
 
-                let vcfContent = "";
-                jsonData.forEach(contact => {
-                    let name = contact.Name || "Unknown";
-                    let phone = contact.Phone || "";
-                    let email = contact.Email || "";
+            if (validUrls) {
+                const tempTextarea = document.createElement('textarea');
+                tempTextarea.value = validUrls.join('\n');
+                document.body.appendChild(tempTextarea);
+                tempTextarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempTextarea);
+                this.innerHTML = 'Copied';
+                setTimeout(() => {
+                    this.innerHTML = 'Copy Urls';
+                }, 4000);
+            } else {
+                alert('No valid URLs to copy!');
+            }
+        });
 
-                    vcfContent += `BEGIN:VCARD\nVERSION:3.0\nFN:${name}\nTEL:${phone}\nEMAIL:${email}\nEND:VCARD\n`;
+        document.getElementById('getKeywordsButton').addEventListener('click', function () {
+            const textarea = document.getElementById('urlInput');
+            const urlPattern = /(https?:\/\/[^\s]+)/gi;
+            const urls = textarea.value.match(urlPattern);
+            const keywordListDiv = document.getElementById('keywordList');
+
+            keywordListDiv.innerHTML = ''; // Clear previous keyword list
+
+            if (urls && urls.length > 0) {
+                const limitedUrls = urls.slice(0, 500);
+                const keywords = limitedUrls.map(url => extractKeywordFromUrl(url));
+
+                this.innerHTML = 'Go Below';
+                setTimeout(() => {
+                    this.innerHTML = 'Copy Keywords';
+                }, 4000);
+
+                keywordListDiv.innerHTML = '<strong>Keywords List</strong><ul>' +
+                    keywords.map(keyword => `<li>${keyword}</li>`).join('') +
+                    '</ul>';
+
+                const copyKeywordsButton = document.createElement('button');
+                copyKeywordsButton.id = 'copyKeywordsButton';
+                copyKeywordsButton.className = 'copy-keywords-button';
+                copyKeywordsButton.textContent = 'Copy Keywords';
+                keywordListDiv.appendChild(copyKeywordsButton);
+
+                copyKeywordsButton.addEventListener('click', function () {
+                    const keywordItems = keywordListDiv.querySelectorAll('li');
+                    const keywords = Array.from(keywordItems).map(item => item.textContent);
+
+                    if (keywords.length > 0) {
+                        const tempTextarea = document.createElement('textarea');
+                        tempTextarea.value = keywords.join('\n');
+                        document.body.appendChild(tempTextarea);
+                        tempTextarea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(tempTextarea);
+                        this.innerHTML = 'Copied';
+                        setTimeout(() => {
+                            this.innerHTML = 'Copy Keywords';
+                        }, 4000);
+                    } else {
+                        alert('No keywords to copy!');
+                    }
                 });
+            } else {
+                alert('No URLs provided or limit exceeded!');
+            }
+        });
 
-                const blob = new Blob([vcfContent], { type: 'text/vcard' });
-                const link = document.createElement('a');
-                link.href = URL.createObjectURL(blob);
-                link.download = "contacts.vcf";
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            };
-            reader.readAsArrayBuffer(fileInput);
+        function extractKeywordFromUrl(url) {
+            try {
+                const urlObj = new URL(url);
+                const pathname = urlObj.pathname;
+                const segments = pathname.split('/').filter(part => part && !part.startsWith('.'));
+
+                if (segments.length > 0) {
+                    const lastSegment = segments[segments.length - 1];
+                    return lastSegment.replace(/[-]/g, ' ').replace(/\.[^/.]+$/, '');
+                } else {
+                    return urlObj.hostname;
+                }
+            } catch (error) {
+                return '(Invalid URL)';
+            }
         }
     </script>
-</body>
-    <footer class="footer"><div class="left">&copy; 2025 
+    <br>
+<h2>How Keywords from urls which is extract bulk keywords from bulk urls(from sitemap or anywhere) works ?</h2>
+<p>If you have sitemap urls but confusing how to extract and how to get urls and keywords from that this tools solve the this issue and provide you to bulk keywrods from bulk url upto 500 urls due to maintain speed of the web page </p>
+<p>
+    Managing website data efficiently requires extracting meaningful keywords from URLs. This process helps in categorizing blog content, improving SEO, and structuring website data effectively. Our tool simplifies this task for you.
+</p>
+
+<p>
+    <strong>Example 1:</strong> If you enter a URL like <strong>https://www.keywordsfromurls.com/</strong>, the tool extracts the keyword <strong>www.keywordsfromurls.com</strong>.
+</p>
+
+<p>
+    <strong>Example 2:</strong> A URL such as <strong>https://keywordsfromurls.com/keywordsfromurls/</strong> will be processed to extract <strong>keywordsfromurls.com</strong>.
+</p>
+
+<p>
+    <strong>Example 3:</strong> For Blogger blogs, if you provide a URL like <strong>https://xyz.blogspot.com/01/01/one-more-second-logic.html</strong>, the extracted keyword will be <strong>one more second logic</strong>.
+</p>
+
+<p>
+    Extracting keywords from URLs helps in organizing data efficiently, enhancing website visibility, and ensuring a more structured approach to content management.
+</p>
+<p>So blogger or seo experts this for you with absoulutely free when you required search it or bookmark this site and explore other tools also that also free for you. </p>
+        <p>Discover other tools: <a href="keywords-grouping.html">Keyword Grouping Tool</a>, <a href="Slug-Generator.html">Slug Generator</a>, and <a href="Keyword-Density-And-Wordcount-Tool.html">Keyword Density Tool</a>.</p>
+
+    </div>
+        <div class="share-container">
+            <p>Share this tool:</p>
+            <div class="share-icons">
+                <a href="https://twitter.com/share?url=https://keywordsfromurls.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://keywordsfromurls.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.linkedin.com/shareArticle?url=https://keywordsfromurls.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://wa.me/?text=Check%20out%20this%20awesome%20tool%20for%20extracting%20keywords%20from%20URLs:%20https://keywordsfromurls.com" target="_blank" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    <!-- FAQ Section -->
+<section id="faq">
+    <div class="container">
+        <h2>Frequently Asked Questions (FAQ)</h2>
+        <div class="faq-item">
+            <h3>What is the purpose of the Keywords from URLs tool?</h3>
+            <p>The Keywords from URLs tool extracts meaningful keywords from segment of a URL. It helps you identify relevant keywords for SEO, content creation, or competitive analysis, making it easier to enhance your website's visibility on search engines.</p>
+        </div>
+        <div class="faq-item">
+            <h3>How does the Keyword Extractor tool work?</h3>
+            <p>The Keyword Extractor tool works by analyzing a URL and extracting the last meaningful segment of the URL path. It ignores file extensions (e.g., `.html`) and domain names (e.g., `.com`), providing you with precise keywords that you can use to improve your content and SEO strategy.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Can I use the Keywords from URLs tool for any URL?</h3>
+            <p>Yes, you can use the Keywords from URLs tool for any valid URL. The tool is designed to handle various types of URLs, including product pages, blog posts, and category pages, making it a versatile tool for extracting keywords from different types of online content.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Is it necessary to log in to use the Keyword Extractor tool?</h3>
+            <p>No, you don’t need to log in to use the Keyword Extractor tool. Simply paste the URL into the input field, and the tool will instantly generate the keywords for you without requiring an account or login.</p>
+        </div>
+        <div class="faq-item">
+            <h3>How can the Keyword Grouping and Keyword Density tools benefit my SEO strategy?</h3>
+            <p>The Keyword Grouping tool helps you organize keywords into related groups, improving content relevance and targeting. The Keyword Density tool helps you calculate how often certain keywords appear in your content, ensuring optimal keyword usage for better SEO performance. Both tools work together to refine and optimize your content strategy.</p>
+        </div>
+    </div>
+</section>
+            <script>
+function toggleDropdown(event) {
+  const dropdown = event.target.nextElementSibling;
+  const isVisible = dropdown.style.display === 'block';
+
+  // Close all other dropdowns
+  document.querySelectorAll('.dropdown-content').forEach((content) => {
+    content.style.display = 'none';
+  });
+
+  // Toggle the clicked dropdown
+  if (!isVisible) {
+    dropdown.style.display = 'block';
+  }
+}
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.dropdown')) {
+    document.querySelectorAll('.dropdown-content').forEach((content) => {
+      content.style.display = 'none';
+    });
+  }
+});
+            </script>
+
+     <!-- Footer -->
+    <footer class="footer"><div class="left">&copy; 2025 Keywords From Urls | <a href="//www.dmca.com/Protection/Status.aspx?ID=6cf02a5f-5f1e-483c-88f4-70ff117b638f" title="DMCA.com Protection Status" class="dmca-badge"> 
+<img src ="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=6cf02a5f-5f1e-483c-88f4-70ff117b638f"  alt="DMCA.com Protection Status" /></a>
+<script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script></div>
         <div class="right">
             <a href="about-us.html" target="_blank">About Us</a>
             <a href="contact-us.html" target="_blank">Contact Us</a>
@@ -341,4 +739,7 @@
             <a href="Terms&condition.html" target="_blank">Terms&condition</a>
         </div>
     </footer>
+    
+</body>
+
 </html>
